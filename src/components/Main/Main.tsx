@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './Main.module.css'
 import {IGroup, IBet, ISubGroup, initialState} from "../../storages/betsReducer";
 import { connect } from 'react-redux';
+import {IStore} from "../../index";
 
-const Main = (bets:any) => {
+interface Props {
+    bets: IGroup[];
+}
+
+const Main: FC<Props> = ({bets}) => {
 
     const handleBetClick = (event: React.MouseEvent<HTMLDivElement>, bet: IBet) => {
         if(event.currentTarget) event.currentTarget.classList.toggle(s.selected)
@@ -121,12 +126,9 @@ const Main = (bets:any) => {
 // }
 //
 export default connect(
-    state => {
-        console.log(state)
-        return {
-            bets: state.betsReducer
-        }
-    },
-    actions => ({
+    ({bets}: IStore) => ({
+        bets
+    }),
+    (actions) => ({
     })
 )(Main);

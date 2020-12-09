@@ -4,7 +4,7 @@ import selectedBets from "./selectedBets";
 
 let reducers = combineReducers({
     selectedBets,
-    betsReducer,
+    bets: betsReducer,
 })
 
 let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ &&
