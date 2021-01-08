@@ -1,0 +1,11 @@
+.advancedBtn {
+    position: absolute;
+    top: 147px;
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .advancedBtn {
+        display: none;
+    }
+}

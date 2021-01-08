@@ -1,0 +1,149 @@
+.advancedStatisticsWrapper {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 34px;
+}
+
+.advancedStatistics div span {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.advancedStatisticsWrapper .advancedStatistics:nth-child(2n+1) div div:nth-child(-n+3) span:last-child {
+    color: #EB460C;
+}
+
+.advancedStatisticsWrapper .advancedStatistics:nth-child(2n) div div:nth-child(-n+3) span:last-child {
+    color: #D7D7D7;
+}
+
+.advancedStatisticsWrapper .advancedStatistics span:first-child{
+    order: 1;
+    color: #6B7783;
+}
+
+.advancedStatisticsWrapper .advancedStatistics span:last-child{
+    color: #D7D7D7;
+    width: 72px;
+    margin-left: 10px;
+}
+
+.advancedStatisticsWrapper .advancedStatistics:nth-child(2n) span:last-child{
+    color: #EB460C;
+}
+
+.advancedStatisticsWrapper .advancedStatistics:nth-child(2n) div div {
+    transform: rotateY(180deg);
+}
+
+.advancedStatisticsWrapper .advancedStatistics:nth-child(2n) div div span {
+    justify-content: flex-start;
+    transform: rotateY(-180deg);
+}
+
+.advancedStatistics div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+@media (max-width: 991px) {
+    .advancedStatisticsWrapper {
+        visibility: hidden;
+        opacity: 0;
+        top: 43px;
+    }
+
+    .headerOfTeams.showStatistics .advancedStatisticsWrapper {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .advancedStatistics > div:first-child {
+        display: none;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:first-child div:last-child div span:first-child  {
+        display: none;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:nth-child(2n) div div span {
+        padding-right: 5px;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:nth-child(2n+1) div div:nth-child(-n+3) span:last-child {
+        position: absolute;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:first-child div div:nth-child(1) span:last-child {
+        left: 6px;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:first-child div div:nth-child(2) span:last-child {
+        left: -8px;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:first-child div div:nth-child(3) span:last-child {
+        left: 4px;
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics:first-child div div:nth-child(4) span:last-child {
+        position: absolute;
+        left: 3px;
+    }
+
+    /*.advancedStatisticsWrapper .advancedStatistics:first-child div:last-child  {*/
+    /*    position: absolute;*/
+    /*    right: 22px;*/
+    /*}*/
+
+    /*.advancedStatisticsWrapper .advancedStatistics:last-child div:last-child  {*/
+    /*    position: absolute;*/
+    /*    left: -23px;*/
+    /*}*/
+
+}
+
+@media (min-width: 992px) {
+    .advancedStatisticsWrapper {
+        width: 631px;
+        left: calc(50% - 315.5px);
+    }
+
+    .advancedStatistics > div:last-child {
+        display: none;
+    }
+
+    .advancedStatistics div div {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 17px;
+        width: 180px;
+        margin-bottom: 3px;
+        padding-right: 10px;
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 15px;
+        background: url("../../../../images/stat-desktop-bg.png");
+    }
+
+    .advancedStatisticsWrapper .advancedStatistics span:first-child{
+        order: 1;
+        width: 108px;
+        color: #6B7783;
+    }
+}
+
+@media (min-width: 1301px) {
+    .advancedStatisticsWrapper {
+        width: 913px;
+        left: calc(50% - 456.5px);
+    }
+}

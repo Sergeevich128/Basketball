@@ -1,0 +1,74 @@
+.statistics {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 15px;
+    color: #D7D7D7;
+    position: absolute;
+}
+
+.progress {
+    stroke: #36CFC9;
+    stroke-width: 4;
+    stroke-linecap: round;
+    fill: rgba(17, 17, 17, 0.8);;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.progressCircle {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: translate(0px);
+    transition: .1s;
+}
+
+.statistics .progressCircle:last-child .progress {
+    stroke: #F5222D;;
+}
+
+.progressCircle span {
+    position: absolute;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+@media (max-width: 991px) {
+    .statistics {
+        width: 112px;
+        top: 78px;
+    }
+
+    .headerOfTeams.oldMatchStatisticsVisible .statistics {
+        /*display: none;*/
+    }
+
+    .headerOfTeams.oldMatchStatisticsVisible .statistics .progressCircle:first-child,
+    .headerOfTeams.oldMatchStatisticsVisible .statistics .progressCircle:last-child {
+        transition: .1s;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .headerOfTeams.oldMatchStatisticsVisible .statistics .progressCircle:first-child {
+        transform: translateX(-20px);
+    }
+
+    .headerOfTeams.oldMatchStatisticsVisible .statistics .progressCircle:last-child {
+        transform: translateX(20px);
+    }
+}
+
+@media (min-width: 992px) {
+    .statistics {
+        width: 202px;
+        top: 44px;
+        left: calc(50% - 101px);
+    }
+}

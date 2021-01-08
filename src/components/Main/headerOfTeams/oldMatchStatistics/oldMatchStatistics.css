@@ -1,0 +1,93 @@
+
+.oldMatchStatistics {
+    color: #6B7783;
+    top: 44px;
+    position: absolute;
+}
+
+.oldMatchStatistics div {
+    display: flex;
+    font-size: 12.69px;
+    line-height: 17.31px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    align-items: center;
+}
+
+.oldMatchStatistics .selected {
+    color: white;
+}
+
+.oldMatchStatistics .selected::before {
+    content: '';
+    width: 4.62px;
+    height: 4.62px;
+    background: #EB460C;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.oldMatchStatistics .selected.right::before {
+    left: 112%;
+}
+
+.oldMatchStatistics .selected.left::before {
+    right: 112%;
+}
+
+.oldMatchStatistics .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #EB460C;
+    margin: 0 5px;
+}
+
+.colon::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+}
+
+.colon {
+    width: 3px;
+    height: 3px;
+    margin: 0 3px 2px 3px;
+    background: #ffffff;
+    position: relative;
+    border-radius: 50%;
+}
+
+.colon::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+}
+
+@media (max-width: 991px) {
+    .oldMatchStatistics {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-15px);
+        transition: .1s;
+        /*height: 51px;*/
+        /*clip-path: inset(0);*/
+    }
+
+    .headerOfTeams.oldMatchStatisticsVisible .oldMatchStatistics {
+        display: block;
+        transform: translateY(0);
+        transition: .1s;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+

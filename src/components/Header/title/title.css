@@ -1,0 +1,13 @@
+.headerTitle {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.headerTitle span:first-child {
+    font-weight: 700;
+}
+
+.headerTitle span:last-child {
+    font-weight: 400;
+}
