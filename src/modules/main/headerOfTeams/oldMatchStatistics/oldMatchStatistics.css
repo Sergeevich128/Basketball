@@ -1,0 +1,113 @@
+.old-match-statistics {
+    color: #6B7783;
+    top: 44px;
+    position: absolute;
+}
+
+.old-match-statistics div {
+    display: flex;
+    font-size: 12.69px;
+    line-height: 17.31px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    align-items: center;
+}
+
+.old-match-statistics .selected {
+    color: white;
+}
+
+.old-match-statistics .selected::before {
+    content: '';
+    width: 4.62px;
+    height: 4.62px;
+    background: #EB460C;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.old-match-statistics .selected.right::before {
+    left: 116%;
+}
+
+.old-match-statistics .selected.left::before {
+    right: 116%;
+}
+
+.old-match-statistics .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #EB460C;
+    margin: 0 5px;
+}
+
+.colon::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+}
+
+.colon {
+    width: 3px;
+    height: 3px;
+    margin: 0 3px 2px 3px;
+    background: #ffffff;
+    position: relative;
+    border-radius: 50%;
+}
+
+.colon::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 50%;
+    top: 5px;
+}
+
+@media (max-width: 991px) {
+    .old-match-statistics {
+        height: 51px;
+        top: 77px;
+    }
+
+    .old-match-statistics div:nth-child(4n),
+    .old-match-statistics div:nth-child(5n) {
+        display: none;
+    }
+
+    .header-of-teams .old-match-statistics div {
+        transform: translateY(-50px);
+        transition: .1s;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .header-of-teams.show-statistics.old-match-statistics div,
+    .header-of-teams.show-statistics.old-match-statistics-visible .old-match-statistics div {
+        transform: translateY(-50px);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .header-of-teams.old-match-statistics-visible .old-match-statistics div {
+        visibility: visible;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .old-match-statistics .selected.right::before {
+        left: 136%;
+    }
+
+    .old-match-statistics .selected.left::before {
+        right: 136%;
+    }
+}
+

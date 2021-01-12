@@ -1,0 +1,19 @@
+.advanced-btn {
+    position: absolute;
+    top: 147px;
+    cursor: pointer;
+}
+
+.header-of-teams.show-statistics .advanced-btn circle {
+    fill: #EAEAEA;
+}
+
+.header-of-teams.show-statistics .advanced-btn rect {
+    fill: #EB460C;
+}
+
+@media (min-width: 992px) {
+    .advanced-btn {
+        display: none;
+    }
+}

@@ -1,11 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import './App.css'
+import Header from "./modules/header/Header";
+import Main from "./modules/main/Main";
 
 const App = () => (
-    <div className={'wrapper'}>
+    <div className="wrapper">
         <Header/>
         <Main/>
     </div>

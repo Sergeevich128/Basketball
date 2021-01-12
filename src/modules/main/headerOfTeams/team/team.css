@@ -1,0 +1,138 @@
+.teams {
+    display: flex;
+    justify-content: space-between;
+}
+
+.teams h4 {
+    color: white;
+    text-transform: uppercase;
+}
+
+
+@media (max-width: 991px) {
+    .teams {
+        width: 343px;
+        height: 157px;
+    }
+
+    .teams h4 {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    .teams .team img {
+        width: 164px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+    }
+
+    .team {
+        display: flex;
+        justify-content: center;
+        min-width: 115px;
+        position: relative;
+    }
+}
+
+@media (min-width: 992px) {
+    .teams .bgRectangleLeft,
+    .teams .bgRectangleRight {
+        position: absolute;
+        transform: rotate(-43deg);
+        width: 166px;
+        height: 265px;
+    }
+
+    .teams .team::before {
+        content: '';
+        position: absolute;
+        transform: rotate(-43deg);
+        width: 166px;
+        height: 265px;
+    }
+
+    .teams .team:first-child::before {
+        top: -30px;
+        left: -23px;
+    }
+
+    .teams .bgRectangleLeft {
+        top: -30px;
+        left: -23px;
+    }
+
+    .teams .team:last-child::before {
+        top: -109px;
+        right: -10px;
+    }
+
+    .teams .bgRectangleRight {
+        top: -109px;
+        right: -10px;
+    }
+
+    .teams .team {
+        clip-path: inset(0);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1311px) {
+    .teams {
+        width: 100%;
+    }
+
+    .teams .team {
+        width: 207px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .teams h4 {
+        position: absolute;
+        top: 14px;
+    }
+
+    .teams .team img {
+        width: 134px;
+        position: absolute;
+        top: 10%;
+    }
+}
+
+@media (min-width: 1312px) {
+    .teams .team img {
+        width: 196px;
+        z-index: 1;
+    }
+}
+
+@media (min-width: 1312px) {
+    .teams {
+        width: 100%;
+    }
+
+    .teams h4 {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 21px;
+        width: 162px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .teams .team {
+        width: calc(50% - 110px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .teams .team:first-child h4 {
+        order: 1;
+    }
+}

@@ -1,0 +1,86 @@
+.team-bets {
+    display: flex;
+    position: absolute;
+    top: 179px;
+}
+
+.team-bets .bet {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 46px;
+    margin: 0 10px;
+    padding-bottom: 3px;
+    background: linear-gradient(180deg, #F66824 0%, rgba(246, 104, 36, 0) 100%), #EB460C;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 2px 0 #BF3606;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.team-bets .bet.selected {
+    background: #C42E00;
+    box-shadow: 0 2px 0 #952200;
+}
+
+.vs,
+.romb,
+.team-bets .bet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-bets .bet span:first-child {
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.team-bets .bet span:last-child {
+    font-size: 24px;
+    color: black;
+    font-weight: 500;
+}
+
+.vs {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    background-image: url('../../../../data/images/vs.png');
+    background-color: #FF9243;
+    margin: 0 8px 0;
+}
+
+.romb {
+    width: 24px;
+    height: 24px;
+    background: #000;
+    transform: rotate(-45deg);
+}
+
+.romb div {
+    transform: rotate(45deg);
+    color: #fff;
+    height: 24px;
+}
+
+@media (max-width: 991px) {
+    .vs {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1311px){
+    .team-bets {
+        left: calc(50% - 204px);
+        top: 143px;
+    }
+}
+
+@media (min-width: 1312px){
+    .team-bets {
+        left: calc(50% - 204px);
+        top: 150px;
+    }
+}

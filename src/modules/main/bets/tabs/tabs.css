@@ -1,0 +1,30 @@
+.tabs-container {
+    background: #1F2123;
+}
+
+.tabs {
+    height: 46px;
+    display: flex;
+}
+
+.underline {
+    display: block;
+    height: 5px;
+    background: #EB460C;
+    transition: .2s;
+}
+
+.tab {
+    display: flex;
+    flex-grow: 1;
+    background: #1F2123;
+    color: #D7D7D7;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabs div.active {
+    color: #EB460C;
+    background: #26282B;
+}

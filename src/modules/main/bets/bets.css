@@ -1,0 +1,167 @@
+.bet-groups {
+    display: flex;
+    justify-content: space-between;
+    background: #1F2123;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.group h3 {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    background: #000;
+    padding: 0 15px;
+}
+
+.group h3 svg {
+    margin-right: 15px;
+}
+
+.group .open-group {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #26282B;
+    cursor: pointer;
+}
+
+.group .open-group::before,
+.group .open-group::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    background: #656D7E;
+    height: 1px;
+    width: 12px;
+    border-radius: 2px;
+    transition: .4s;
+}
+
+.group.closed .open-group::after {
+    transform: rotate(90deg);
+}
+
+.group > div:first-child .open-group svg {
+    margin-right: 15px;
+}
+
+.bet-groups h4 {
+    margin: 0;
+    height: 20px;
+}
+
+.group div:last-child > div {
+    width: 100%;
+}
+
+.tabs img {
+    height: 20px;
+    width: 20px;
+}
+
+.star {
+    background-image: url("../../../data/images/star.png");
+}
+
+.subgroup h4 {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.subgroup:first-child h4 {
+    background: #213557;
+}
+
+.subgroup:last-child h4 {
+    background: #146734;
+}
+
+.bets-zone .bet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    box-sizing: border-box;
+    border-bottom: 2px solid #EAEAEA;
+    padding: 0 12px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.subgroups {
+    display: flex;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.subgroup:not(:first-of-type) .bet {
+    border-left: 2px solid #EAEAEA;
+}
+
+.bet.selected {
+    background: #EB460C;
+}
+
+.bet span {
+    font-size: 14px;
+    line-height: 19px;
+    color: #232527;
+    font-weight: 400;
+}
+
+.bet span:first-child {
+    font-weight: 400;
+}
+
+.bet span:last-child {
+    font-weight: 700;
+}
+
+.bet.selected span {
+    color: #232527;
+}
+
+.bet.selected span:last-child {
+    color: white;
+}
+
+.group {
+    width: 336px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.bet-groups.mobile {
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .group,
+    .menu-bets {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .menu-bets {
+        min-width: 678px;
+    }
+}
+

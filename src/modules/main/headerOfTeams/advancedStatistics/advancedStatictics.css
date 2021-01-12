@@ -1,0 +1,172 @@
+.advanced-statistics-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 34px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+}
+
+.advanced-statistics div span {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n+1) div div:nth-child(-n+3) span:last-child {
+    color: #EB460C;
+}
+
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div:nth-child(-n+3) span:last-child {
+    color: #6B7783;
+}
+
+.advanced-statistics-wrapper .advanced-statistics span:first-child {
+    order: 1;
+    color: #ffffff;
+}
+
+.advanced-statistics-wrapper .advanced-statistics span:last-child {
+    color: #6B7783;
+    width: 72px;
+    margin-left: 10px;
+}
+
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) span:last-child {
+    color: #EB460C;
+}
+
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div {
+    transform: rotateY(180deg);
+}
+
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div span {
+    justify-content: flex-start;
+    transform: rotateY(-180deg);
+}
+
+.advanced-statistics div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+@media (max-width: 991px) {
+    .advanced-statistics-wrapper {
+        visibility: hidden;
+        opacity: 0;
+        top: 43px;
+        margin-left: 6px;
+        transition: .1s;
+    }
+
+    .header-of-teams.show-statistics .advanced-statistics-wrapper {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .advanced-statistics > div:first-child {
+        display: none;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:first-child div:last-child div span:first-child {
+        display: none;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div span {
+        padding-right: 5px;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics span:first-child {
+        position: relative;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics span:first-child::before {
+        content: '';
+        width: 21px;
+        position: absolute;
+        left: calc(50% - 16px);
+        bottom: -4px;
+        border-bottom: 3px solid #EB460C;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n+1) div div:nth-child(-n+3) span:last-child {
+        position: absolute;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(1) span:last-child {
+        left: 6px;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(2) span:last-child {
+        left: -8px;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(3) span:last-child {
+        left: 4px;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(4) span:last-child {
+        position: absolute;
+        left: 3px;
+    }
+}
+
+@media (min-width: 992px) {
+    .advanced-statistics-wrapper {
+        width: 631px;
+        left: calc(50% - 315.5px);
+    }
+
+    .advanced-statistics > div:last-child {
+        display: none;
+    }
+
+    .advanced-statistics div div {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 17px;
+        width: 180px;
+        margin-bottom: 3px;
+        padding-right: 10px;
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 15px;
+        background: url("../../../../data/images/stat-desktop-bg.png");
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics span:first-child {
+        order: 1;
+        width: 108px;
+        color: #6B7783;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics span:first-child {
+        order: 1;
+        color: #6B7783;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div:nth-child(-n+3) span:last-child {
+        color: #D7D7D7;
+    }
+
+    .advanced-statistics-wrapper .advanced-statistics span:last-child {
+        color: #D7D7D7;
+        width: 72px;
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 1312px) {
+    .advanced-statistics-wrapper {
+        width: 913px;
+        left: calc(50% - 456.5px);
+    }
+}
