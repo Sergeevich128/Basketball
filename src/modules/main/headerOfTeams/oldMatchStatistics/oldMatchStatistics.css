@@ -73,13 +73,7 @@
 
 @media (max-width: 991px) {
     .old-match-statistics {
-        height: 51px;
-        top: 77px;
-    }
-
-    .old-match-statistics div:nth-child(4n),
-    .old-match-statistics div:nth-child(5n) {
-        display: none;
+        top: 55px;
     }
 
     .header-of-teams .old-match-statistics div {

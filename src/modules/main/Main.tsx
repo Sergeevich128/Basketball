@@ -2,12 +2,12 @@ import React, {FC, useEffect, useRef} from 'react';
 import './main..css'
 import {connect} from 'react-redux';
 import {IStore} from "../../index";
-import {changeStake} from "./selectedBets/actions";
-import {IStateBetSlip} from "./selectedBets/betSlip";
-import SelectedBets from "./selectedBets/SelectedBets";
-import Bets from "./bets/Bets";
+import {changeStake} from "../selectedBets/actions";
+import {IStateBetSlip} from "../selectedBets/betSlip";
+import SelectedBets from "../selectedBets/SelectedBets";
+import Bets from "../bets/Bets";
 import Team from "./headerOfTeams/team/Team";
-import TeamBets from "./bets/TeamBets/TeamBets";
+import TeamBets from "../bets/TeamBets/TeamBets";
 import ChangeMatch from "./headerOfTeams/sliderChangeMatch/ChangeMatch";
 import AdvancedStatistics from "./headerOfTeams/advancedStatistics/AdvancedStatistics";
 import {IOldMatchStatistic, ITeam, ITeamsState} from "./headerOfTeams/teamsInfo";
@@ -28,25 +28,48 @@ interface Props {
   history: Array<Array<number>>
 }
 
-const Main: FC<Props> = ({changeStake, prevBtn, nextBtn, betSlip, teamLeft, teamRight, oldMatchStatistics}) => {
+const Main: FC<Props> = ({changeStake, history, prevBtn, nextBtn, betSlip, teamLeft, teamRight, oldMatchStatistics}) => {
   let onStakeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const stake = event.target.value;
     changeStake && changeStake(+stake)
   }
 
+  const headerOfTeams = useRef<HTMLDivElement>(null);
+
+  let canSwitch = false;
+  setTimeout(() => {
+    canSwitch = true
+  }, 1000)
+
   const changePrev = () => {
-    prevBtn && prevBtn();
+    if (canSwitch) {
+      if (history.length !== 1) {
+        headerOfTeams?.current?.classList.add("switch-teams");
+        setTimeout(() => {
+          headerOfTeams?.current?.classList.remove("switch-teams");
+        }, 500)
+        setTimeout(() => {
+          prevBtn && prevBtn();
+        }, 330)
+      }
+    }
   }
 
   const changeNext = () => {
-    nextBtn && nextBtn();
+    if (canSwitch) {
+      headerOfTeams?.current?.classList.add("switch-teams");
+      setTimeout(() => {
+        headerOfTeams?.current?.classList.remove("switch-teams");
+      }, 500)
+      setTimeout(() => {
+        nextBtn && nextBtn();
+      }, 330)
+    }
   }
 
-  const headerOfTeams = useRef(null);
   useEffect(() => {
     setInterval(() => {
-      // @ts-ignore
-      headerOfTeams.current.classList.toggle('old-match-statistics-visible');
+      headerOfTeams?.current?.classList.toggle('old-match-statistics-visible');
     }, 4000)
   }, []);
 

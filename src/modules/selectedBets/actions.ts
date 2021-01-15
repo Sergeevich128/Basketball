@@ -1,4 +1,4 @@
-import {DEFAULT_STAKE, INPUT_DEFAULT_STAKE, REMOTE_BET, SELECT_TAB} from "../../../storages/constants";
+import {DEFAULT_STAKE, INPUT_DEFAULT_STAKE, REMOTE_BET, SELECT_TAB} from "../../storages/constants";
 
 export const changeStake = (defaultStake: number) => ({
   type: DEFAULT_STAKE,

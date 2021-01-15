@@ -1,4 +1,4 @@
-import {BET_SELECTED, DEVICE_TYPE} from "../../../storages/constants";
+import {BET_SELECTED, DEVICE_TYPE} from "../../storages/constants";
 import {IDeviceInfo} from "./deviceInfo";
 import {IBet} from "./betsReducer";
 

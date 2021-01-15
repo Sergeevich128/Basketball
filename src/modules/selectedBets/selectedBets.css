@@ -44,6 +44,7 @@
 
 .selected-bet h6 {
     margin: 0 0 2px 0;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     font-size: 11px;
     line-height: 15px;
@@ -72,6 +73,7 @@
     width: 12px;
     position: relative;
     margin-left: 6px;
+    font-family: 'Open Sans', sans-serif;
     cursor: pointer;
 }
 

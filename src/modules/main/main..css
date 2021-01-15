@@ -5,6 +5,7 @@ main {
     align-items: center;
     margin: 11px auto 0;
     overflow: hidden;
+    padding-bottom: 8px;
 }
 
 .bets-zone {
@@ -57,7 +58,7 @@ main {
 }
 
 .bet-slip .header div:last-child {
-    height: 43px;
+    height: 42px;
     font-size: 14px;
     line-height: 19px;
     font-weight: 700;
@@ -122,6 +123,17 @@ main {
         background-size: cover;
         user-select: none;
     }
+
+    /*.header-of-teams.show-statistics::after {*/
+    /*    content: "";*/
+    /*    transition: .1s;*/
+    /*    background: rgba(18, 18, 18, .6);*/
+    /*    position: absolute;*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*    right: 0;*/
+    /*    bottom: 0;*/
+    /*}*/
 }
 
 @media (min-width: 992px) {

@@ -1,68 +1,115 @@
 .last-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 801px;
     position: absolute;
     top: 6px;
-    left: calc(50% - 400.5px);
 }
 
-.last {
+.last-mobile {
+    width: 108px;
+    height: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 123px;
-    height: 19px;
-    position: relative;
-    background: #26282B;
-    color: #D7D7D7;
+    background: url("../../../../data/images/lastBgMobile.png");
+    color: #ffffff;
+    font-size: 10px;
+    line-height: 15px;
     text-transform: uppercase;
-    font-size: 9.5px;
-    line-height: 18px;
 }
 
-.last-wrapper .last:first-child {
-    transform: skewX(40deg);
-}
-
-.last:first-child div {
-    transform: skewX(-40deg);
-}
-
-.last::before {
+.last-mobile::before {
     content: '';
-    position: absolute;
     width: 45px;
-    height: 4px;
-    top: 18px;
-    background: #EB460C;
+    position: absolute;
+    left: calc(50% - 25px);
+    bottom: -2px;
+    border-bottom: 4px solid #EB460C;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
 }
 
-.last:first-child::before {
-    left: 25px;
+
+@media (max-width: 991px) {
+    .last-wrapper .last {
+        display: none;
+    }
+
+    .last-mobile {
+        transform: translateY(-100px);
+        visibility: hidden;
+        opacity: 0;
+        transition: .1s;
+    }
+
+    .header-of-teams.show-statistics .last-mobile {
+        transform: translateY(0);
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
-.last-wrapper .last:last-child {
-    transform: skewX(-40deg);
-}
+@media (min-width: 992px) {
+    .last-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 801px;
+        left: calc(50% - 400.5px);
+    }
 
-.last:last-child::before {
-    right: 25px;
-}
+    .last {
+        width: 123px;
+        height: 19px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        text-transform: uppercase;
+        background: #26282B;
+        color: #D7D7D7;
+        font-size: 9.5px;
+        line-height: 18px;
+    }
 
-.last:last-child div {
-    transform: skewX(40deg);
+    .last-wrapper .last:first-child {
+        transform: skewX(40deg);
+    }
+
+    .last:first-child div {
+        transform: skewX(-40deg);
+    }
+
+    .last::before {
+        content: '';
+        position: absolute;
+        width: 45px;
+        height: 4px;
+        top: 18px;
+        background: #EB460C;
+    }
+
+    .last:first-child::before {
+        left: 25px;
+    }
+
+    .last-wrapper .last:last-child {
+        transform: skewX(-40deg);
+    }
+
+    .last:last-child::before {
+        right: 25px;
+    }
+
+    .last:last-child div {
+        transform: skewX(40deg);
+    }
+
+    .last-mobile {
+        display: none;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1311px) {
     .last-wrapper {
         top: 7px;
         padding: 0 131px;
-    }
-}
-
-@media (max-width: 991px) {
-    .last-wrapper {
-        display: none;
     }
 }

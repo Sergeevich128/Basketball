@@ -55,11 +55,12 @@ menu .menu-item:hover {
 
 .sandwich-open::before {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 64px;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 5;
     background: rgba(0, 0, 0, 0.6);
     pointer-events: none;
 }
@@ -121,4 +122,10 @@ menu .menu-item:hover {
 
 .img-menu svg path:hover {
     fill: orangered;
+}
+
+@media (min-width: 993px) {
+    .sandwich-open::before {
+        position: fixed;
+    }
 }

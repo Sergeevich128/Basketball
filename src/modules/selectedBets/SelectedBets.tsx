@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import "./selectedBets.css";
 import {connect} from "react-redux";
-import {IStore} from "../../../index";
+import {IStore} from "../../index";
 import {ISelectedBet, IStateBetSlip} from "./betSlip";
 import SimpleBar from "simplebar-react"
 import 'simplebar/dist/simplebar.min.css';
@@ -25,24 +25,13 @@ const SelectedBets: FC<Props> = ({betSlip, removeSelectedBet, changeInputStake, 
   }
 
   return (
-    <SimpleBar forceVisible="y" autoHide={false} style={{maxHeight: 330}}>
+    <SimpleBar forceVisible="y" autoHide={false} style={{maxHeight: 287}}>
       {betSlip.selectedBets && betSlip.selectedBets.map((selectedBet, index) => {
-        // console.log(selectedBet);
-        bets.betGroups.forEach((group) => {
-          group.subgroups.forEach((subGroup) => {
-            subGroup.bets.forEach((bet) => {
-              if (bet.id === selectedBet.id) {
-                // console.log(group.name)
-                // console.log(subGroup.name)
-                // console.log(bet)
-              }
-            })
-          })
-        })
+
         return <div key={index} className="selected-bet">
           <div>
-            <h6>Handicap</h6>
-            <h5>Anadolu Efes({selectedBet.name})<span>@{selectedBet.odd}</span></h5>
+            <h6>{selectedBet.groupName}</h6>
+            <h5>{selectedBet.subgroupName} ({selectedBet.name})<span>@{selectedBet.odd}</span></h5>
           </div>
           <div>
             <input type="number" onChange={(event) => onStakeChange(event, selectedBet)}

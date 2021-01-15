@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useRef} from 'react';
 import {IBetsState} from "../betsReducer";
 import {connect} from "react-redux";
-import {IStore} from "../../../../index";
+import {IStore} from "../../../index";
 import {selectTab} from "../../selectedBets/actions";
 import './tabs.css'
 

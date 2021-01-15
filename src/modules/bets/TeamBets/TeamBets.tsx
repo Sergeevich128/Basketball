@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {connect} from "react-redux";
-import {IStore} from "../../../../index";
+import {IStore} from "../../../index";
 import {IBetsState, ISubGroup} from "../betsReducer";
 import Bet from "../components/Bet";
 import './teamBets.css'

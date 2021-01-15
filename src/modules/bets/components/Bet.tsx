@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {IBet, ISubGroup} from "../betsReducer";
 import {IStateBetSlip} from "../../selectedBets/betSlip";
 import {connect} from "react-redux";
-import {IStore} from "../../../../index";
+import {IStore} from "../../../index";
 import {addBet} from "../actions";
 
 interface Props {

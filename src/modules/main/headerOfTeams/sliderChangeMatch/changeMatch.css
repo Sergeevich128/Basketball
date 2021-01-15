@@ -5,8 +5,9 @@
     width: 168px;
     height: 27px;
     padding: 0 23px;
-    z-index: 1000;
     background: url("../../../../data/images/changeMatchBg.png");
+    transition: .1s;
+    z-index: 1;
 }
 
 .change-match div {
@@ -27,6 +28,14 @@
 
 .change-match div svg {
     cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .header-of-teams.show-statistics .change-match {
+        transform: translateY(-100px);
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 
 @media (min-width: 992px) {

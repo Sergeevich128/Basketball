@@ -1,7 +1,7 @@
 import React, {FC, useEffect} from 'react';
 import {IBet, ISubGroup} from "../betsReducer";
 import {connect} from "react-redux";
-import {IStore} from "../../../../index";
+import {IStore} from "../../../index";
 import Bet from "./Bet";
 
 interface Props {

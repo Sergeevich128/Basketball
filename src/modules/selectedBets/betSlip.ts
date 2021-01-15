@@ -1,10 +1,12 @@
-import {BET_SELECTED, DEFAULT_STAKE, INPUT_DEFAULT_STAKE, REMOTE_BET} from "../../../storages/constants";
+import {BET_SELECTED, DEFAULT_STAKE, INPUT_DEFAULT_STAKE, REMOTE_BET} from "../../storages/constants";
 
 export interface ISelectedBet {
   id: number;
   name: string;
   odd: number;
   value: number;
+  subgroupName: string;
+  groupName: string;
 }
 
 export interface IStateBetSlip {

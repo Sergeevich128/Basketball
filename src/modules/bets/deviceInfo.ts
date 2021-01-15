@@ -1,6 +1,6 @@
-import {DEVICE_TYPE} from "../../../storages/constants";
+import {DEVICE_TYPE} from "../../storages/constants";
 import {sendDeviceInfo} from "./actions";
-import store from "../../../storages/store";
+import store from "../../storages/store";
 
 export interface IDeviceInfo {
   isMobile: boolean;

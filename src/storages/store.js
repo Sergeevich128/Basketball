@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from "redux";
-import betsReducer from "../modules/main/bets/betsReducer";
-import betSlip from "../modules/main/selectedBets/betSlip";
-import deviceInfo from "../modules/main/bets/deviceInfo";
+import betsReducer from "../modules/bets/betsReducer";
+import betSlip from "../modules/selectedBets/betSlip";
+import deviceInfo from "../modules/bets/deviceInfo";
 import teamsInfo from "../modules/main/headerOfTeams/teamsInfo";
 
 let reducers = combineReducers({

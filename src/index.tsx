@@ -5,9 +5,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./storages/store";
-import {IBetsState, IGroup} from "./modules/main/bets/betsReducer";
-import {IStateBetSlip} from "./modules/main/selectedBets/betSlip";
-import {IDeviceInfo} from "./modules/main/bets/deviceInfo";
+import {IBetsState, IGroup} from "./modules/bets/betsReducer";
+import {IStateBetSlip} from "./modules/selectedBets/betSlip";
+import {IDeviceInfo} from "./modules/bets/deviceInfo";
 import {ITeamsState} from "./modules/main/headerOfTeams/teamsInfo";
 
 export interface IStore {
