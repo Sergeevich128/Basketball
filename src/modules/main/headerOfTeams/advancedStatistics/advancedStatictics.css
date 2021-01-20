@@ -59,14 +59,22 @@
     .advanced-statistics-wrapper {
         visibility: hidden;
         opacity: 0;
-        top: 43px;
+        top: 42px;
         margin-left: 6px;
-        transition: .1s;
+        transition: .2s;
+    }
+
+    .header-of-teams .advanced-statistics-wrapper,
+    .header-of-teams.old-match-statistics-visible .advanced-statistics-wrapper {
+        transform: translateY(-80px);
     }
 
     .header-of-teams.show-statistics .advanced-statistics-wrapper {
+        transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.75);
+        transform: translateY(0);
         visibility: visible;
         opacity: 1;
+        transition-delay: .2s;
     }
 
     .advanced-statistics > div:first-child {

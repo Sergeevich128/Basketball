@@ -9,6 +9,7 @@ import {IBetsState, IGroup} from "./modules/bets/betsReducer";
 import {IStateBetSlip} from "./modules/selectedBets/betSlip";
 import {IDeviceInfo} from "./modules/bets/deviceInfo";
 import {ITeamsState} from "./modules/main/headerOfTeams/teamsInfo";
+import {IBalance} from "./modules/header/balance/userBalance";
 
 export interface IStore {
   bets: IBetsState;
@@ -16,6 +17,7 @@ export interface IStore {
   betSlip: IStateBetSlip;
   deviceInfo: IDeviceInfo;
   teamsInfo: ITeamsState;
+  userBalance: IBalance;
 }
 
 ReactDOM.render(

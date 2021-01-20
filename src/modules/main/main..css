@@ -27,8 +27,6 @@ main {
 .bet-slip {
     display: flex;
     flex-direction: column;
-    height: 464px;
-    width: 290px;
     position: relative;
     background: rgba(17, 17, 17, 0.9);;
 }
@@ -42,7 +40,7 @@ main {
     color: white;
 }
 
-.bet-slip .header div {
+.bet-slip .header > div {
     display: flex;
     align-items: center;
     padding-left: 19px;
@@ -54,26 +52,22 @@ main {
     font-size: 18px;
     line-height: 21px;
     background-image: url('../../data/images/betSlipBg.png');
+    background-repeat: no-repeat;
     background-color: #000;
 }
 
-.bet-slip .header div:last-child {
-    height: 42px;
+.bet-slip .header > div:last-child {
     font-size: 14px;
-    line-height: 19px;
-    font-weight: 700;
+    line-height: 17px;
     text-transform: uppercase;
     color: #656D7E;
     background: #18191B;
 }
 
-.bet-slip .header div:last-child span {
-    margin-right: 45px;
-}
 
 .bet-slip .header div:last-child input {
     width: 77px;
-    height: 32px;
+    min-height: 32px;
     background: #18191B;
     border: 1px solid #313336;
     box-sizing: border-box;
@@ -86,28 +80,168 @@ main {
     -webkit-appearance: none;
 }
 
-.bet-slip button {
-    height: 71px;
+.bet-slip > div:last-child button {
+    height: 100%;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #EB460C;
     border-radius: 2px;
+    transition: .15s;
+    margin-left: auto;
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
+    text-transform: uppercase;
     color: white;
     cursor: pointer;
     outline: none;
-    border: 7px solid black;
+    border: none;
+}
+
+.bet-slip > div:last-child div {
+    display: none;
 }
 
 @media (max-width: 991px) {
     .bet-slip {
         display: none;
+    }
+
+    .bet-slip.mini,
+    .bet-slip.hidden {
+        display: flex;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .bet-slip.hidden .selected-bets {
+        display: none;
+    }
+
+    .bet-slip.hidden > div:last-child div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 38%;
+        background: #E3E3E3;
+        border-radius: 2px;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #26282B;
+        cursor: pointer;
+        transition: .15s;
+    }
+
+    .bet-slip.hidden > div:last-child div span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28.33px;
+        height: 37px;
+        margin-right: 11.66px;
+        font-size: 16px;
+        line-height: 19px;
+        color: #EB460C;
+        background: url("./../../data/images/betSlipIconMobile.png");
+    }
+
+    .bet-slip > div:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 71px;
+        padding: 7px;
+        background: #000;
+    }
+
+    .bet-slip.full > div:last-child {
+        position: absolute;
+        bottom: 61px;
+        left: 0;
+        right: 0;
+    }
+
+    .bet-slip.hidden .header div:first-child {
+        display: block;
+    }
+
+    .bet-slip.mini .header,
+    .bet-slip.hidden .header {
+        display: none;
+    }
+
+    .bet-slip.full {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+        top: 60px;
+        z-index: 1;
+    }
+
+    .bet-slip.full .header {
+        display: flex;
+        height: 63px;
+    }
+
+    .bet-slip.full .header > div:last-child {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 60px;
+        background: none;
+    }
+
+    .bet-slip.full .header > div:last-child .remove-selected-bet {
+        position: absolute;
+        right: -35px;
+        top: calc(50% - 6px);
+    }
+
+    .bet-slip.full .header > div:last-child span {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 7px;
+
+    }
+
+    .bet-slip.full .header div:last-child input {
+        min-height: 32px;
+    }
+
+    .bet-slip.mini .selected-bet {
+        background: rgba(18,18,18,0.45);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .bet-slip.mini .selected-bet {
+        background: rgba(18,18,18,0.91);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .bet-slip.mini .selected-bets {
+        position: absolute;
+        bottom: 69px;
+        right: 0;
+        left: 0;
+    }
+
+    .bet-slip.mini > div:last-child {
+        z-index: 1;
+    }
+
+    .wrapper-selected-bets {
+        height: 100%;
+        max-height: 100%;
+    }
+
+    .bet-slip.hidden > div:last-child button {
+        width: 60%;
     }
 
     main {
@@ -124,16 +258,10 @@ main {
         user-select: none;
     }
 
-    /*.header-of-teams.show-statistics::after {*/
-    /*    content: "";*/
-    /*    transition: .1s;*/
-    /*    background: rgba(18, 18, 18, .6);*/
-    /*    position: absolute;*/
-    /*    width: 100%;*/
-    /*    height: 100%;*/
-    /*    right: 0;*/
-    /*    bottom: 0;*/
-    /*}*/
+    .bet-slip.full .selected-bets {
+        height: 100%;
+        background: #1f2123;
+    }
 }
 
 @media (min-width: 992px) {
@@ -141,6 +269,50 @@ main {
         height: 138px;
         justify-content: center;
         margin-bottom: 70px;
+    }
+
+    .bet-slip {
+        height: 464px;
+        width: 290px;
+    }
+
+    .bet-slip .header div:last-child span {
+        margin-right: 45px;
+    }
+
+    .bet-slip .header div:last-child {
+        height: 42px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #656D7E;
+        background: #18191B;
+    }
+
+    .bet-slip > div:last-child button {
+        height: 71px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #EB460C;
+        border-radius: 2px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: white;
+        cursor: pointer;
+        outline: none;
+        border: 7px solid black;
+    }
+
+    .bet-slip .header > div:last-child .remove-selected-bet {
+        display: none;
+    }
+
+    .wrapper-selected-bets {
+        max-height: 287px;
     }
 }
 

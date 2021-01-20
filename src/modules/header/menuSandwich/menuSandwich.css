@@ -50,6 +50,7 @@ menu .menu-item:hover {
     opacity: 1;
     top: 64px;
     left: 0;
+    transition: .2s;
     background: #ffffff;
 }
 
@@ -122,6 +123,26 @@ menu .menu-item:hover {
 
 .img-menu svg path:hover {
     fill: orangered;
+}
+
+@media (max-width: 991px) {
+    .sandwich-icon {
+        height: 18px;
+        margin-right: 19px;
+    }
+
+    .sandwich-icon span {
+        width: 4px;
+        height: 4px;
+    }
+
+    .sandwich-open menu {
+        top: 60px;
+    }
+
+    .sandwich-open::before {
+        top: 60px;
+    }
 }
 
 @media (min-width: 993px) {

@@ -73,35 +73,28 @@
 
 @media (max-width: 991px) {
     .old-match-statistics {
-        top: 55px;
+        top: 54px;
     }
 
-    .header-of-teams .old-match-statistics div {
-        transform: translateY(-50px);
-        transition: .1s;
+    .header-of-teams.old-match-statistics-visible .old-match-statistics{
+        transition-delay: .16s;
+        transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1);
+    }
+
+    .header-of-teams .old-match-statistics,
+    .header-of-teams.show-statistics.old-match-statistics,
+    .header-of-teams.show-statistics.old-match-statistics-visible .old-match-statistics {
+        transform: translateY(-80px);
+        transition: .2s;
+        transition-delay: 0s;
         opacity: 0;
         visibility: hidden;
     }
 
-    .header-of-teams.show-statistics.old-match-statistics div,
-    .header-of-teams.show-statistics.old-match-statistics-visible .old-match-statistics div {
-        transform: translateY(-50px);
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .header-of-teams.old-match-statistics-visible .old-match-statistics div {
+    .header-of-teams.old-match-statistics-visible .old-match-statistics {
         visibility: visible;
         transform: translateY(0);
         opacity: 1;
-    }
-
-    .old-match-statistics .selected.right::before {
-        left: 136%;
-    }
-
-    .old-match-statistics .selected.left::before {
-        right: 136%;
     }
 }
 

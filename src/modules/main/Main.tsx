@@ -20,8 +20,8 @@ import {nextBtn, prevBtn} from "./headerOfTeams/actions";
 interface Props {
   betSlip: IStateBetSlip;
   changeStake?: Function;
-  prevBtn?: Function;
-  nextBtn?: Function;
+  prevBtn: Function;
+  nextBtn: Function;
   teamLeft: ITeam;
   teamRight: ITeam;
   oldMatchStatistics: IOldMatchStatistic;
@@ -35,36 +35,38 @@ const Main: FC<Props> = ({changeStake, history, prevBtn, nextBtn, betSlip, teamL
   }
 
   const headerOfTeams = useRef<HTMLDivElement>(null);
+  const betSlipWrapper = useRef<HTMLDivElement>(null);
 
   let canSwitch = false;
   setTimeout(() => {
     canSwitch = true
   }, 1000)
 
-  const changePrev = () => {
+  const switchTeams = (func: Function) => {
     if (canSwitch) {
-      if (history.length !== 1) {
-        headerOfTeams?.current?.classList.add("switch-teams");
+      canSwitch = false
+      headerOfTeams?.current?.classList.add("switch-teams");
+      setTimeout(() => {
+        headerOfTeams?.current?.classList.remove("switch-teams");
+        headerOfTeams?.current?.classList.add("new-teams");
         setTimeout(() => {
-          headerOfTeams?.current?.classList.remove("switch-teams");
+          headerOfTeams?.current?.classList.remove("new-teams");
         }, 500)
-        setTimeout(() => {
-          prevBtn && prevBtn();
-        }, 330)
-      }
+      }, 500)
+      setTimeout(() => {
+        func && func();
+      }, 330)
+    }
+  }
+
+  const changePrev = () => {
+    if (history.length !== 1) {
+      switchTeams(prevBtn)
     }
   }
 
   const changeNext = () => {
-    if (canSwitch) {
-      headerOfTeams?.current?.classList.add("switch-teams");
-      setTimeout(() => {
-        headerOfTeams?.current?.classList.remove("switch-teams");
-      }, 500)
-      setTimeout(() => {
-        nextBtn && nextBtn();
-      }, 330)
-    }
+    switchTeams(nextBtn)
   }
 
   useEffect(() => {
@@ -76,9 +78,34 @@ const Main: FC<Props> = ({changeStake, history, prevBtn, nextBtn, betSlip, teamL
   const showAdvancedStatistics = (event: React.MouseEvent<SVGElement>) => {
     if (event.currentTarget.parentElement) {
       event.currentTarget.parentElement.classList.toggle("show-statistics")
-      if (event.currentTarget.parentElement.classList.contains("show-statistics")) {
-      }
     }
+  }
+
+  const chooseBetSlipClassName = () => {
+    if (betSlip.selectedBets.length <= 2 && betSlip.selectedBets.length >= 1 && betSlipWrapper?.current?.classList.value !== "bet-slip full") {
+      return " mini"
+    } else if (betSlip.selectedBets.length > 2) {
+      return " hidden"
+    } else if (betSlip.selectedBets.length <= 2 && betSlip.selectedBets.length >= 1) {
+      return " full"
+    } else {
+      return ""
+    }
+  }
+
+  const showFullBetSlip = (event: any) => {
+    event.currentTarget.parentElement.parentElement.classList.value = "bet-slip full";
+    event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.classList.value = "wrapper header-sticky"
+    return false;
+  }
+
+  const hideFullBetSlip = (event: any) => {
+    if (betSlip.selectedBets.length <= 2) {
+      event.currentTarget.parentElement.parentElement.parentElement.classList.value = "bet-slip mini"
+    } else {
+      event.currentTarget.parentElement.parentElement.parentElement.classList.value = "bet-slip hidden"
+    }
+    event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.classList.value = "wrapper"
   }
 
   return (
@@ -104,16 +131,22 @@ const Main: FC<Props> = ({changeStake, history, prevBtn, nextBtn, betSlip, teamL
       </div>
       <div className="bets-zone">
         <Bets/>
-        <div className="bet-slip">
+        <div ref={betSlipWrapper} className={"bet-slip" + (chooseBetSlipClassName())}>
           <div className="header">
             <div>Bet Slip</div>
             <div>
               <span>Default Stake</span>
               <input value={betSlip.defaultStake} type="number" onChange={onStakeChange}/>
+              <div className="remove-selected-bet" onClick={(event) => hideFullBetSlip(event)}/>
             </div>
           </div>
-          <SelectedBets/>
-          <button>Start Match!</button>
+          <div className="selected-bets">
+            <SelectedBets/>
+          </div>
+          <div>
+            <div onClick={(event) => showFullBetSlip(event)}><span>{betSlip.selectedBets.length}</span>Bet Slip</div>
+            <button>Start Match!</button>
+          </div>
         </div>
       </div>
     </main>

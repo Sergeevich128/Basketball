@@ -4,9 +4,9 @@
     justify-content: center;
     width: 168px;
     height: 27px;
-    padding: 0 23px;
     background: url("../../../../data/images/changeMatchBg.png");
-    transition: .1s;
+    transition: .2s;
+    transition-delay: .1s;
     z-index: 1;
 }
 
@@ -24,6 +24,14 @@
     text-transform: uppercase;
     color: white;
     opacity: 0.8;
+}
+
+.change-match .button-prev {
+    margin: 0 5px;
+}
+
+.change-match .button-next {
+    margin: 0 8px;
 }
 
 .change-match div svg {

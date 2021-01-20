@@ -37,13 +37,15 @@
         transform: translateY(-100px);
         visibility: hidden;
         opacity: 0;
-        transition: .1s;
+        transition: .2s;
+        transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.75);
     }
 
     .header-of-teams.show-statistics .last-mobile {
         transform: translateY(0);
         visibility: visible;
         opacity: 1;
+        transition-delay: .2s;
     }
 }
 

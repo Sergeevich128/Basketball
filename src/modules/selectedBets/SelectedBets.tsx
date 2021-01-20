@@ -25,7 +25,7 @@ const SelectedBets: FC<Props> = ({betSlip, removeSelectedBet, changeInputStake, 
   }
 
   return (
-    <SimpleBar forceVisible="y" autoHide={false} style={{maxHeight: 287}}>
+    <SimpleBar className="wrapper-selected-bets" forceVisible="y" autoHide={false}>
       {betSlip.selectedBets && betSlip.selectedBets.map((selectedBet, index) => {
 
         return <div key={index} className="selected-bet">
