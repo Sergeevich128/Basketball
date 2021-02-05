@@ -1,4 +1,11 @@
-import {BET_SELECTED, DEFAULT_STAKE, INPUT_DEFAULT_STAKE, REMOTE_BET} from "../../storages/constants";
+import {
+  BET_SELECTED,
+  DEFAULT_STAKE,
+  INPUT_DEFAULT_STAKE,
+  INPUT_FAST_STAKE,
+  REMOTE_BET,
+  REMOTE_LAST_NUM
+} from "../../storages/constants";
 
 export interface ISelectedBet {
   id: number;
@@ -12,11 +19,13 @@ export interface ISelectedBet {
 export interface IStateBetSlip {
   selectedBets: ISelectedBet[];
   defaultStake: number;
+  fastStakesValue: number[];
 }
 
 const initialState = {
   selectedBets: [],
-  defaultStake: 123,
+  defaultStake: 10,
+  fastStakesValue: [0.20, 0.5, 1, 5, 10]
 };
 
 const betSlip = (state: IStateBetSlip = initialState, action: any) => {
@@ -33,10 +42,25 @@ const betSlip = (state: IStateBetSlip = initialState, action: any) => {
       }
       return {...state};
     case DEFAULT_STAKE:
-      return {...state, defaultStake: action.defaultStake};
+      const newBets = state.selectedBets.map((selectedBet: ISelectedBet) => {
+        selectedBet.value = action.defaultStake;
+        return selectedBet
+      })
+      return {...state, defaultStake: action.defaultStake, selectedBets: newBets};
     case INPUT_DEFAULT_STAKE:
       let selectedBet = state.selectedBets.find((bet) => bet.id === action.id);
-      if (selectedBet) selectedBet.value = action.inputDefaultStake;
+      if (selectedBet) selectedBet.value = selectedBet.value >0 ? selectedBet.value + action.inputDefaultStake.toString() : action.inputDefaultStake.toString();
+      return {...state};
+    case INPUT_FAST_STAKE:
+      let selectedBetFastStake = state.selectedBets.find((bet) => bet.id === action.id);
+      if (selectedBetFastStake) selectedBetFastStake.value = action.inputDefaultStake;
+      return {...state};
+    case REMOTE_LAST_NUM:
+      let selectedBetRemote = state.selectedBets.find((bet) => bet.id === action.betId);
+      if (selectedBetRemote) {
+        let valueStr = selectedBetRemote.value.toString();
+        selectedBetRemote.value = +(valueStr.substring(0, valueStr.length - 1))
+      }
       return {...state};
     case REMOTE_BET:
       const index = state.selectedBets.findIndex((bet) => bet.id === action.betId)

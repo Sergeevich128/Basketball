@@ -2,44 +2,31 @@ import React, {FC} from 'react';
 import "./selectedBets.css";
 import {connect} from "react-redux";
 import {IStore} from "../../index";
-import {ISelectedBet, IStateBetSlip} from "./betSlip";
+import {IStateBetSlip} from "./betSlip";
 import SimpleBar from "simplebar-react"
 import 'simplebar/dist/simplebar.min.css';
 import {changeInputStake, removeSelectedBet} from "./actions";
-import {IBetsState} from "../bets/betsReducer";
+import SelectedBet from "./selectedBet/SelectedBet";
 
 interface Props {
   betSlip: IStateBetSlip;
   removeSelectedBet?: Function;
-  changeInputStake?: Function;
-  bets: IBetsState;
 }
 
-const SelectedBets: FC<Props> = ({betSlip, removeSelectedBet, changeInputStake, bets}) => {
+const SelectedBets: FC<Props> = ({betSlip, removeSelectedBet}) => {
+
   const removeBet = (id: number) => {
     removeSelectedBet && removeSelectedBet(id);
   }
 
-  let onStakeChange = (event: React.ChangeEvent<HTMLInputElement>, selectedBet: ISelectedBet) => {
-    changeInputStake && changeInputStake(event.currentTarget?.value, selectedBet.id);
-  }
-
   return (
     <SimpleBar className="wrapper-selected-bets" forceVisible="y" autoHide={false}>
-      {betSlip.selectedBets && betSlip.selectedBets.map((selectedBet, index) => {
-
-        return <div key={index} className="selected-bet">
-          <div>
-            <h6>{selectedBet.groupName}</h6>
-            <h5>{selectedBet.subgroupName} ({selectedBet.name})<span>@{selectedBet.odd}</span></h5>
-          </div>
-          <div>
-            <input type="number" onChange={(event) => onStakeChange(event, selectedBet)}
-                   value={selectedBet.value}/>
-            <div onClick={() => removeBet(selectedBet.id)} className="remove-selected-bet"/>
-          </div>
-        </div>
-      })}
+      {betSlip.selectedBets && betSlip.selectedBets.map((selectedBet) =>
+        <SelectedBet
+          key={selectedBet.id}
+          selectedBet={selectedBet}
+          removeBet={removeBet}
+        />)}
     </SimpleBar>
   );
 };
@@ -52,8 +39,7 @@ const mapDispatchToProps = (dispatch: any) => {
 }
 
 export default connect(
-  ({betSlip, bets}: IStore) => ({
+  ({betSlip}: IStore) => ({
     betSlip,
-    bets
   }), mapDispatchToProps
 )(SelectedBets);

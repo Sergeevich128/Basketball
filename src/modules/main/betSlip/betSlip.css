@@ -1,0 +1,362 @@
+.bet-slip {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: .3s;
+    background: rgba(17, 17, 17, 0.9);
+}
+
+.bet-slip-header {
+    color: white;
+}
+
+.bet-slip-header > div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.bet-slip-header > div:last-child > span {
+    margin-left: 19px;
+}
+
+.bet-slip-header > div:last-child > input {
+    margin-right: 24px;
+}
+
+.bet-slip-header > div:first-child {
+    min-height: 63px;
+    width: 100%;
+    padding: 0 24px 0 19px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    background-image: url('../../../data/images/betSlipBg.png');
+    background-repeat: no-repeat;
+    background-color: #000;
+}
+
+.bet-slip-header > div:last-child {
+    font-size: 14px;
+    flex-wrap: wrap;
+    font-weight: 700;
+    overflow: hidden;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #656D7E;
+    background: #18191B;
+}
+
+.bet-slip-header div:last-child input {
+    width: 77px;
+    min-height: 32px;
+    background: #18191B;
+    border: 1px solid #313336;
+    box-sizing: border-box;
+    border-radius: 2px;
+    outline: none;
+    color: white;
+}
+
+.bet-slip-header div:last-child input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.selected-bets {
+    flex-grow: 1;
+}
+
+.wrapper-selected-bets {
+    height: 100%;
+}
+
+.bet-slip-btns button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #EB460C;
+    border-radius: 2px;
+    transition: .15s;
+    margin-left: auto;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.start-match {
+    margin-top: 5px;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.total-bet-info,
+.possible-win-info {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+    color: #121212;
+}
+
+.total-bet-info {
+    margin-right: 9px;
+}
+
+.bet-slip-btns > div {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .bet-slip {
+        transform: translateY(190%);
+        transition: .3s;
+        display: flex;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .bet-slip-header {
+        display: none;
+    }
+
+    .bet-slip.bet-slip-btn-show,
+    .bet-slip.opened {
+        transform: translateY(0);
+    }
+
+    .bet-slip.bet-slip-btn-show .selected-bets {
+        height: 0;
+    }
+
+    .bet-slip.mini {
+        transform: translateY(0);
+    }
+
+    .bet-slip.bet-slip-btn-show .bet-slip-btns > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 38%;
+        background: #E3E3E3;
+        border-radius: 2px;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: #26282B;
+        cursor: pointer;
+        transition: .15s;
+    }
+
+    .selected-bets-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28.33px;
+        height: 37px;
+        margin-right: 11.66px;
+        font-size: 16px;
+        line-height: 19px;
+        color: #EB460C;
+        background: url("./../../../data/images/betSlipIconMobile.png");
+    }
+
+    .bet-slip-btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 71px;
+        padding: 7px;
+        background: #000;
+    }
+
+    .bet-slip.opened > div:last-child {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+    }
+
+    .bet-slip.bet-slip-btn-show .possible-win-info {
+        display: none;
+    }
+
+    .bet-slip.opened {
+        height: 100%;
+        top: 60px;
+        z-index: 1;
+    }
+
+    .bet-slip.opened .bet-slip-header {
+        display: flex;
+        flex-direction: column;
+        min-height: 63px;
+        overflow: hidden;
+    }
+
+    .bet-slip-header.show-keyboard {
+        overflow: visible;
+    }
+
+    .bet-slip-header > div:last-child {
+        display: flex;
+        position: absolute;
+        right: 0;
+        background: none;
+    }
+
+    .bet-slip-header > div:last-child > div:first-child {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bet-slip-header > div:last-child .remove-selected-bet {
+        height: 24px;
+        width: 24px;
+        background: #D7D7D7;
+        border-radius: 50%;
+        margin: 16px 15px;
+    }
+
+    .bet-slip-header > div:last-child .remove-selected-bet::before {
+        top: 6px;
+        left: 11px;
+    }
+
+    .bet-slip-header > div:last-child .remove-selected-bet::after {
+        right: 11px;
+        top: 6px;
+    }
+
+    .bet-slip-header > div:last-child div:first-child > span:first-child {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 7px;
+    }
+
+    .bet-slip-header .selected-bet-input {
+        min-height: 32px;
+    }
+
+    .bet-slip.mini .selected-bet {
+        background: rgba(18,18,18,0.91);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .bet-slip.mini .selected-bets {
+        position: absolute;
+        bottom: 69px;
+        right: 0;
+        left: 0;
+    }
+
+    .bet-slip.mini > div:last-child {
+        z-index: 1;
+    }
+
+    .bet-slip-btns button div:last-child {
+        display: flex;
+    }
+
+    .bet-slip.bet-slip-btn-show > div:last-child button {
+        width: 60%;
+    }
+
+    .bet-slip.opened .selected-bets {
+        height: 100%;
+        background: #1f2123;
+    }
+
+    .total-bet-info,
+    .possible-win-info {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .total-bet-info {
+        margin-right: 11px;
+    }
+}
+
+@media (min-width: 992px) {
+    .bet-slip {
+        height: 464px;
+        width: 290px;
+        transform: translateX(110%);
+    }
+
+    .wrapper-selected-bets {
+        max-height: 290px;
+    }
+
+    .bet-slip.mini,
+    .bet-slip.bet-slip-btn-show {
+        transform: translateX(0);
+    }
+
+    .bet-slip-header {
+        display: flex;
+        flex-direction: column;
+        min-height: 105px;
+        overflow: hidden;
+    }
+
+    .bet-slip-header .stake-accordion {
+        order: 1;
+    }
+
+    .bet-slip-header > div:last-child > div:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 42px;
+        padding: 0 24px 0 19px;
+        transition: .15s;
+    }
+
+    .bet-slip-btns button {
+        height: 71px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background: #EB460C;
+        cursor: pointer;
+        outline: none;
+        border: 7px solid black;
+    }
+
+    .start-match {
+        border-radius: 2px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: white;
+    }
+
+    .bet-slip-header .remove-selected-bet {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1311px) {
+    .bet-slip {
+        margin: 0 12px;
+    }
+}
+
+@media (min-width: 1312px) {
+    .bet-slip {
+        margin: 0 27px;
+    }
+}
