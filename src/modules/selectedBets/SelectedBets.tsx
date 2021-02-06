@@ -11,12 +11,16 @@ import SelectedBet from "./selectedBet/SelectedBet";
 interface Props {
   betSlip: IStateBetSlip;
   removeSelectedBet?: Function;
+  setBetSlipOpen: Function;
 }
 
-const SelectedBets: FC<Props> = ({betSlip, removeSelectedBet}) => {
+const SelectedBets: FC<Props> = ({betSlip, removeSelectedBet, setBetSlipOpen}) => {
 
   const removeBet = (id: number) => {
     removeSelectedBet && removeSelectedBet(id);
+    if (betSlip.selectedBets.length === 0) {
+      setBetSlipOpen(false)
+    }
   }
 
   return (

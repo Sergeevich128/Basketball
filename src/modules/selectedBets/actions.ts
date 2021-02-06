@@ -29,9 +29,9 @@ export const removeSelectedBet = (betId: number) => ({
   betId
 });
 
-export const removeLastNum = (betId: number) => ({
+export const removeLastNum = (id: number) => ({
   type: REMOTE_LAST_NUM,
-  betId
+  id
 });
 
 export const selectTab = (id: number) => ({

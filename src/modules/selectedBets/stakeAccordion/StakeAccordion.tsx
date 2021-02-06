@@ -34,7 +34,7 @@ const StakeAccordion: FC<Props> = React.forwardRef(({betSlip, changeInputStake, 
       className="stake-accordion"
       ref={ref}
     >
-      <div className="fastStake">
+      <div className="fast-stake">
         {betSlip.fastStakesValue.map((stake, index) => <span
           key={index}
           onMouseDown={() => changeFastStake(stake, betId)}

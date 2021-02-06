@@ -100,7 +100,7 @@ const SelectedBet: FC<Props> = ({selectedBet, removeBet, changeInputStake}) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    changeInputStake: (stake: number, id: number) => dispatch(changeInputStake(stake, id))
+    changeInputStake: (stake: number, id: number) => dispatch(changeInputStake(stake, id)),
   }
 }
 

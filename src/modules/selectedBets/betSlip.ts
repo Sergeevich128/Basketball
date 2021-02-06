@@ -4,7 +4,7 @@ import {
   INPUT_DEFAULT_STAKE,
   INPUT_FAST_STAKE,
   REMOTE_BET,
-  REMOTE_LAST_NUM
+  REMOTE_LAST_NUM,
 } from "../../storages/constants";
 
 export interface ISelectedBet {
@@ -25,10 +25,12 @@ export interface IStateBetSlip {
 const initialState = {
   selectedBets: [],
   defaultStake: 10,
-  fastStakesValue: [0.20, 0.5, 1, 5, 10]
+  fastStakesValue: [0.20, 0.5, 1, 5, 10],
+  canConfirmStake: false
 };
 
 const betSlip = (state: IStateBetSlip = initialState, action: any) => {
+  let selectedBet = state.selectedBets.find((bet) => bet.id === action.id);
   switch (action.type) {
     case BET_SELECTED:
       action.bet.value = state.defaultStake;
@@ -48,18 +50,19 @@ const betSlip = (state: IStateBetSlip = initialState, action: any) => {
       })
       return {...state, defaultStake: action.defaultStake, selectedBets: newBets};
     case INPUT_DEFAULT_STAKE:
-      let selectedBet = state.selectedBets.find((bet) => bet.id === action.id);
-      if (selectedBet) selectedBet.value = selectedBet.value >0 ? selectedBet.value + action.inputDefaultStake.toString() : action.inputDefaultStake.toString();
+      if (selectedBet) {
+        (window.innerWidth < 993) ? selectedBet.value = selectedBet.value >0 ? selectedBet.value + action.inputDefaultStake.toString() :
+          action.inputDefaultStake.toString() :
+          selectedBet.value = action.inputDefaultStake
+      }
       return {...state};
     case INPUT_FAST_STAKE:
-      let selectedBetFastStake = state.selectedBets.find((bet) => bet.id === action.id);
-      if (selectedBetFastStake) selectedBetFastStake.value = action.inputDefaultStake;
+      if (selectedBet) selectedBet.value = action.inputDefaultStake;
       return {...state};
     case REMOTE_LAST_NUM:
-      let selectedBetRemote = state.selectedBets.find((bet) => bet.id === action.betId);
-      if (selectedBetRemote) {
-        let valueStr = selectedBetRemote.value.toString();
-        selectedBetRemote.value = +(valueStr.substring(0, valueStr.length - 1))
+      if (selectedBet) {
+        let valueStr = selectedBet.value.toString();
+        selectedBet.value = +(valueStr.substring(0, valueStr.length - 1))
       }
       return {...state};
     case REMOTE_BET:

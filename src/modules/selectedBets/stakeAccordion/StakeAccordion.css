@@ -24,14 +24,14 @@
     border-bottom: 5px solid #EB460C;
 }
 
-.stake-accordion .fastStake {
+.stake-accordion .fast-stake {
     display: flex;
     justify-content: space-between;
     padding: 3px;
     background: #E3E3E3;
 }
 
-.stake-accordion .fastStake span,
+.stake-accordion .fast-stake span,
 .stake-accordion .num,
 .stake-accordion .keyboard .back-btn,
 .stake-accordion .keyboard .confirm,
@@ -41,7 +41,7 @@
     justify-content: center;
 }
 
-.stake-accordion .fastStake span {
+.stake-accordion .fast-stake span {
     width: 19%;
     height: 46px;
     border: 1px solid #C9C9C9;
@@ -56,7 +56,9 @@
     cursor: pointer;
 }
 
-.stake-accordion > div:not(.fastStake) {
+.stake-accordion > div:not(.fast-stake) {
+    font-size: 24px;
+    line-height: 28px;
     cursor: pointer;
 }
 
@@ -64,6 +66,12 @@
     .show-keyboard .stake-accordion {
         height: 199px;
         border-top: 3px solid #EB460C;
+        font-weight: 400;
+    }
+
+    .stake-accordion .fast-stake {
+        font-size: 18px;
+        line-height: 21px;
     }
 
     .stake-accordion .keyboard {

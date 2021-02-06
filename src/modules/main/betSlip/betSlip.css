@@ -32,7 +32,7 @@
     line-height: 21px;
     background-image: url('../../../data/images/betSlipBg.png');
     background-repeat: no-repeat;
-    background-color: #000;
+    background-color: #121212;
 }
 
 .bet-slip-header > div:last-child {
@@ -196,6 +196,7 @@
     .bet-slip.opened .bet-slip-header {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         min-height: 63px;
         overflow: hidden;
     }
@@ -206,6 +207,7 @@
 
     .bet-slip-header > div:last-child {
         display: flex;
+        align-items: center;
         position: absolute;
         right: 0;
         background: none;
@@ -221,7 +223,7 @@
         width: 24px;
         background: #D7D7D7;
         border-radius: 50%;
-        margin: 16px 15px;
+        margin: 0 15px;
     }
 
     .bet-slip-header > div:last-child .remove-selected-bet::before {
@@ -244,6 +246,8 @@
 
     .bet-slip-header .selected-bet-input {
         min-height: 32px;
+        background: #18191B;
+        border: 1px solid #26282B;
     }
 
     .bet-slip.mini .selected-bet {

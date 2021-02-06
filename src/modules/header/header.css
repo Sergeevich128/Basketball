@@ -27,7 +27,7 @@ header a {
         padding: 0 19px;
     }
 
-    .wrapper.header-sticky header {
+    header.sticky {
         position: sticky;
         top: 0;
         z-index: 2;

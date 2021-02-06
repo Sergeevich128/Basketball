@@ -25,9 +25,13 @@ const BetSlip: FC<Props> = ({betSlip}) => {
   let sumSelectedBetsValue = 0;
   let possibleWin = 0;
 
-  // if (betsLength === 0) {
-  //   setBetSlipOpen(false)
-  // }
+  const header = document.getElementsByTagName("header")[0];
+
+  if (isOpened) {
+    header?.classList.add("sticky")
+  } else {
+    header?.classList.remove("sticky")
+  }
 
   const selectedBetsValue = () => {
     betSlip.selectedBets.map((selectedBet: ISelectedBet) => {
@@ -56,7 +60,9 @@ const BetSlip: FC<Props> = ({betSlip}) => {
           />
         </BetSlipHeader>
       <div className="selected-bets">
-        <SelectedBets/>
+        <SelectedBets
+          setBetSlipOpen={setBetSlipOpen}
+        />
       </div>
       <div className="bet-slip-btns">
         <div onClick={() => setBetSlipOpen(true)}>
