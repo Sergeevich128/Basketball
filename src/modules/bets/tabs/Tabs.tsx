@@ -2,7 +2,7 @@ import React, {FC, useEffect, useRef} from 'react';
 import {IBetsState} from "../betsReducer";
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
-import {selectTab} from "../../selectedBets/actions";
+import {selectTab} from "../../main/betSlip/actions";
 import './tabs.css'
 
 interface Props {
@@ -36,15 +36,14 @@ const Tabs: FC<Props> = ({bets, addSelectedTab}) => {
   return (
     <div className="tabs-container" ref={tabsRef}>
       <div className="tabs">
-        {bets.tabs.map((tab, index) => {
-          return <div
+        {bets.tabs.map((tab) =>
+          <div
             key={tab.id}
             className={`tab tab-${tab.id}` + (tab.id === bets.activeTabId ? ' active' : '')}
             onClick={() => handleTabClick(tab.id)}
           >
             {tab.name}
-          </div>
-        })}
+          </div>)}
       </div>
       <span ref={refUnderline} className="underline"/>
     </div>

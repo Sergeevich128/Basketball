@@ -1,11 +1,11 @@
 import {
-  BET_SELECTED,
-  DEFAULT_STAKE,
-  INPUT_DEFAULT_STAKE,
-  INPUT_FAST_STAKE,
-  REMOTE_BET,
-  REMOTE_LAST_NUM,
-} from "../../storages/constants";
+  SELECT_BET,
+  CHANGE_DEFAULT_STAKE,
+  CHANGE_INPUT_STAKE,
+  CHANGE_INPUT_STAKE_WITH_FAST_STAKE,
+  REMOVE_BET,
+  REMOVE_LAST_NUM,
+} from "../../../storages/constants";
 
 export interface ISelectedBet {
   id: number;
@@ -29,50 +29,52 @@ const initialState = {
   canConfirmStake: false
 };
 
-const betSlip = (state: IStateBetSlip = initialState, action: any) => {
+const betSlipReducer = (state: IStateBetSlip = initialState, action: any) => {
   let selectedBet = state.selectedBets.find((bet) => bet.id === action.id);
   switch (action.type) {
-    case BET_SELECTED:
+    case SELECT_BET:
       action.bet.value = state.defaultStake;
       if (action.bet.selected === true) {
-        action.bet.selected = false;
         const index = state.selectedBets.indexOf(action.bet)
         state.selectedBets.splice(index, 1)
       } else {
-        action.bet.selected = true;
         state.selectedBets.push(action.bet)
       }
       return {...state};
-    case DEFAULT_STAKE:
+    case CHANGE_DEFAULT_STAKE:
       const newBets = state.selectedBets.map((selectedBet: ISelectedBet) => {
         selectedBet.value = action.defaultStake;
         return selectedBet
       })
       return {...state, defaultStake: action.defaultStake, selectedBets: newBets};
-    case INPUT_DEFAULT_STAKE:
+    case CHANGE_INPUT_STAKE:
       if (selectedBet) {
-        (window.innerWidth < 993) ? selectedBet.value = selectedBet.value >0 ? selectedBet.value + action.inputDefaultStake.toString() :
-          action.inputDefaultStake.toString() :
-          selectedBet.value = action.inputDefaultStake
+        (window.innerWidth < 993) ? selectedBet.value = selectedBet.value >0 ? selectedBet.value + action.inputStake.toString() :
+          action.inputStake.toString() :
+          selectedBet.value = action.inputStake
       }
       return {...state};
-    case INPUT_FAST_STAKE:
+    case CHANGE_INPUT_STAKE_WITH_FAST_STAKE:
       if (selectedBet) selectedBet.value = action.inputDefaultStake;
       return {...state};
-    case REMOTE_LAST_NUM:
+    case REMOVE_LAST_NUM:
       if (selectedBet) {
         let valueStr = selectedBet.value.toString();
         selectedBet.value = +(valueStr.substring(0, valueStr.length - 1))
       }
       return {...state};
-    case REMOTE_BET:
-      const index = state.selectedBets.findIndex((bet) => bet.id === action.betId)
+    case REMOVE_BET:
+      const index = state.selectedBets.findIndex((bet) => bet.id === action.id)
       if (index > -1) {
         state.selectedBets.splice(index, 1);
       }
+      // if (selectedBet && selectedBet.id > -1) {
+      //   state.selectedBets.splice(state.selectedBets.findIndex(() => selectedBet?.id === action.id), 1);
+      // }
+
       return {...state}
   }
   return state;
 }
 
-export default betSlip;
+export default betSlipReducer;

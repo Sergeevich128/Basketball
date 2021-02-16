@@ -1,9 +1,9 @@
 import React, {FC, ForwardedRef} from 'react';
 import "./StakeAccordion.css"
 import {connect} from "react-redux";
-import {IStore} from "../../../index";
-import {IStateBetSlip} from "../betSlip";
-import {changeInputStake, changeDefaultStake, changeFastStake, removeLastNum} from "../actions";
+import {IStateBetSlip} from "../../betSlipReducer";
+import {changeInputStake, changeDefaultStake, changeFastStake, removeLastNum} from "../../actions";
+import {IStore} from "../../../../../index";
 
 const keyboardValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 

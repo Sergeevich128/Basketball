@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import "./selectedBets.css";
 import {connect} from "react-redux";
-import {IStore} from "../../index";
-import {IStateBetSlip} from "./betSlip";
+import {IStateBetSlip} from "../betSlipReducer";
 import SimpleBar from "simplebar-react"
 import 'simplebar/dist/simplebar.min.css';
-import {changeInputStake, removeSelectedBet} from "./actions";
+import {changeInputStake, removeSelectedBet} from "../actions";
 import SelectedBet from "./selectedBet/SelectedBet";
+import {IStore} from "../../../../index";
 
 interface Props {
   betSlip: IStateBetSlip;
@@ -44,6 +44,6 @@ const mapDispatchToProps = (dispatch: any) => {
 
 export default connect(
   ({betSlip}: IStore) => ({
-    betSlip,
+    betSlip
   }), mapDispatchToProps
 )(SelectedBets);

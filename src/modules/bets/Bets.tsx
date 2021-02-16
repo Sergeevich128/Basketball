@@ -19,7 +19,6 @@ const orderList: { [key: number]: number[] } = {
   4: [3, 6, 7]
 }
 
-
 const Bets: FC<Props> = ({bets, deviceInfo}) => (
   <div className="menu-bets">
     <Tabs/>

@@ -1,10 +1,10 @@
 import React, {FC, useRef, useState} from 'react';
 import "./betSlip.css"
 import BetSlipHeader from "./betSlipHeader/BetSlipHeader";
-import SelectedBets from "../../selectedBets/SelectedBets";
+import SelectedBets from "./selectedBets/SelectedBets";
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
-import {ISelectedBet, IStateBetSlip} from "../../selectedBets/betSlip";
+import {ISelectedBet, IStateBetSlip} from "./betSlipReducer";
 
 interface Props {
   betSlip: IStateBetSlip;

@@ -1,28 +1,33 @@
 import React, {FC} from 'react';
 import {IBet, ISubGroup} from "../betsReducer";
-import {IStateBetSlip} from "../../selectedBets/betSlip";
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
-import {addBet} from "../actions";
+import {addBet, changeValueOfSelectedField} from "../actions";
 
 interface Props {
   addBet?: Function;
-  betSlip?: IStateBetSlip;
+  changeValueOfSelectedField?: Function;
   subgroups?: ISubGroup[];
   bet: IBet;
   name?: string;
   odd?: number;
 }
 
-const Bet: FC<Props> = ({betSlip, addBet, bet, name, odd}) => {
+const Bet: FC<Props> = ({addBet,changeValueOfSelectedField, bet, name, }) => {
   const handleBetClick = (bet: IBet) => {
     addBet && addBet(bet)
+    changeValueOfSelectedField && changeValueOfSelectedField(bet.id)
   }
+
+  const classList = [
+    "bet",
+    bet.selected && "selected"
+  ].filter(Boolean).join(" ");
 
   return (
     <div
       data-bet-id={bet.id}
-      className={"bet" + (betSlip?.selectedBets.find(({id}) => id === bet.id) ? " selected" : "")}
+      className={classList}
       onClick={() => handleBetClick(bet)}
     >
       <span>{name || bet.name}</span>
@@ -34,6 +39,7 @@ const Bet: FC<Props> = ({betSlip, addBet, bet, name, odd}) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     addBet: (bet: IBet) => dispatch(addBet(bet)),
+    changeValueOfSelectedField: (id: number) => dispatch(changeValueOfSelectedField(id)),
   }
 }
 

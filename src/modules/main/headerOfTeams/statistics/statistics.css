@@ -45,8 +45,12 @@
         top: 78px;
     }
 
-    .header-of-teams .statistics .progress-circle {
+    .header-of-teams.old-match-statistics-visible .statistics .progress-circle {
         transition-delay: .2s;
+    }
+
+    .header-of-teams.switch-teams.old-match-statistics-visible .statistics .progress-circle {
+        transition-delay: 0s;
     }
 
     .header-of-teams.old-match-statistics-visible .statistics .progress-circle {

@@ -1,12 +1,12 @@
 import {createStore, combineReducers} from "redux";
 import betsReducer from "../modules/bets/betsReducer";
-import betSlip from "../modules/selectedBets/betSlip";
+import betSlipReducer from "../modules/main/betSlip/betSlipReducer";
 import deviceInfo from "../modules/bets/deviceInfo";
 import teamsInfo from "../modules/main/headerOfTeams/teamsInfo";
 import userBalance from "../modules/header/balance/userBalance";
 
 let reducers = combineReducers({
-  betSlip,
+  betSlip: betSlipReducer,
   bets: betsReducer,
   deviceInfo,
   teamsInfo,

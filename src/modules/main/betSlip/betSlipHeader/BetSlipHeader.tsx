@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import StakeAccordion from "../../../selectedBets/stakeAccordion/StakeAccordion";
-import SelectedBetInput from "../../../selectedBets/selectedBet/selectedBetInput/SelectedBetInput";
-import {IStateBetSlip} from "../../../selectedBets/betSlip";
-import {changeDefaultStake} from "../../../selectedBets/actions";
+import StakeAccordion from "../selectedBets/stakeAccordion/StakeAccordion";
+import SelectedBetInput from "../selectedBets/selectedBet/selectedBetInput/SelectedBetInput";
+import {IStateBetSlip} from "../betSlipReducer";
+import {changeDefaultStake} from "../actions";
 import {connect} from "react-redux";
 import {IStore} from "../../../../index";
 

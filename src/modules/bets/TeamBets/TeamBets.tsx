@@ -1,33 +1,33 @@
 import React, {FC} from 'react';
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
-import {IBetsState, ISubGroup} from "../betsReducer";
-import Bet from "../components/Bet";
+import {IBet, ISubGroup} from "../betsReducer";
 import './teamBets.css'
+import Bet from "../components/Bet";
 
 interface Props {
-  subgroups?: ISubGroup[];
-  bets: IBetsState;
+    subgroups?: ISubGroup[];
+    bets: IBet[];
 }
 
 const TeamBets: FC<Props> = ({bets}) => {
-  const bet = bets.betGroups.filter((el) => el.name === 'Money line');
+    const bet = bets.filter((bet) => bet.groupName === 'Money line');
 
-  return (
-    <div className="team-bets">
-      <Bet bet={bet[0].subgroups[0].bets[0]} name={bet[0].subgroups[0].name}/>
-      <div className="vs">
-        <div className="romb">
-          <div>vs</div>
+    return (
+        <div className="team-bets">
+            <Bet bet={bet[0]} name={bet[0].subgroupName}/>
+            <div className="vs">
+                <div className="romb">
+                    <div>vs</div>
+                </div>
+            </div>
+            <Bet bet={bet[1]} name={bet[1].subgroupName}/>
         </div>
-      </div>
-      <Bet bet={bet[0].subgroups[1].bets[0]} name={bet[0].subgroups[1].name}/>
-    </div>
-  );
+    );
 };
 
 export default connect(
-  ({bets}: IStore) => ({
-    bets
-  }),
+    ({bets}: IStore) => ({
+        bets: bets.betsList
+    }),
 )(TeamBets);

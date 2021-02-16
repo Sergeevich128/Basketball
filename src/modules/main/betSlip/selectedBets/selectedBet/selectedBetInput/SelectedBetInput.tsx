@@ -1,7 +1,7 @@
 import React, {FC, ForwardedRef} from 'react';
-import {IDeviceInfo} from "../../../bets/deviceInfo";
+import {IDeviceInfo} from "../../../../../bets/deviceInfo";
 import {connect} from "react-redux";
-import {IStore} from "../../../../index";
+import {IStore} from "../../../../../../index";
 
 interface Props {
   onStakeChange: Function;

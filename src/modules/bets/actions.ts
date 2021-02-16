@@ -1,4 +1,4 @@
-import {BET_SELECTED, DEVICE_TYPE} from "../../storages/constants";
+import {SELECT_BET, CHANGE_VALUE_OF_SELECTED_FIELD, DEVICE_TYPE} from "../../storages/constants";
 import {IDeviceInfo} from "./deviceInfo";
 import {IBet} from "./betsReducer";
 
@@ -8,6 +8,11 @@ export const sendDeviceInfo = (info: IDeviceInfo) => ({
 });
 
 export const addBet = (bet: IBet) => ({
-  type: BET_SELECTED,
+  type: SELECT_BET,
   bet,
+});
+
+export const changeValueOfSelectedField = (id: number) => ({
+  type: CHANGE_VALUE_OF_SELECTED_FIELD,
+  id,
 });

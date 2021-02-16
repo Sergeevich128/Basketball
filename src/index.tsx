@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./storages/store";
 import {IBetsState, IGroup} from "./modules/bets/betsReducer";
-import {IStateBetSlip} from "./modules/selectedBets/betSlip";
+import {IStateBetSlip} from "./modules/main/betSlip/betSlipReducer";
 import {IDeviceInfo} from "./modules/bets/deviceInfo";
 import {ITeamsState} from "./modules/main/headerOfTeams/teamsInfo";
 import {IBalance} from "./modules/header/balance/userBalance";

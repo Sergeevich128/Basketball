@@ -12,7 +12,7 @@ const Team: FC<Props> = ({team, sideOfShadow}) => {
 
   useEffect(() => {
     selectTeam(`${team.firstName}_${team.lastName}`);
-  }, [team.id]);
+  }, [team.id, team.firstName, team.lastName]);
 
   const selectTeam = (name: string) => {
     if (sideOfShadow === "right") {
