@@ -27,6 +27,11 @@
     flex-direction: column;
 }
 
+.simplebar-content {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .simplebar-scrollbar.simplebar-visible::before {
     border-radius: 10px;
     width: 5px;
@@ -35,7 +40,8 @@
     top: 0;
 }
 
-.simplebar-track.simplebar-vertical {
+.selected-bets .simplebar-track.simplebar-vertical {
+    top: 105px;
     right: -11px;
     max-width: 5px;
     border-radius: 10px;
@@ -46,7 +52,7 @@
     width: 5px;
 }
 
-.selected-bet h5 {
+.selected-bet-name-odd {
     margin: 0;
     font-weight: 500;
     font-size: 12px;
@@ -63,24 +69,8 @@
     color: #D7D7D7;
 }
 
-.selected-bet h5 span {
+.selected-bet-name-odd span {
     color: #EB460C;
-    margin-left: 3px;
-}
-
-.selected-bet-input {
-    display: flex;
-    align-items: center;
-    width: 77px;
-    height: 32px;
-    background: #1F2123;
-    border: 1px solid #121212;
-    border-radius: 2px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
-    outline: none;
-    color: white;
 }
 
 .remove-selected-bet {
@@ -122,15 +112,14 @@
     margin-top: 6px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .selected-bet  {
         padding-left: 19px;
         margin-left: 0;
     }
-
 }
 
-@media (min-width: 993px) {
+@media (min-width: 992px) {
     .selected-bet  {
         margin-left: 19px;
     }
@@ -138,4 +127,5 @@
     .selected-bet-wrapper {
         background: #26282B;
     }
+
 }

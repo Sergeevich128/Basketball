@@ -1,36 +1,35 @@
 import React, {FC} from 'react';
-import {IBet, ISubGroup} from "../betsReducer";
+import {IBet} from "../betsReducer";
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
-import {addBet, changeValueOfSelectedField} from "../actions";
+import {addBet, changeBetSelected} from "../actions";
+import {classList} from "../../../core/constants";
 
 interface Props {
   addBet?: Function;
-  changeValueOfSelectedField?: Function;
-  subgroups?: ISubGroup[];
+  changeSelected?: Function;
   bet: IBet;
   name?: string;
-  odd?: number;
 }
 
-const Bet: FC<Props> = ({addBet,changeValueOfSelectedField, bet, name, }) => {
-  const handleBetClick = (bet: IBet) => {
-    addBet && addBet(bet)
-    changeValueOfSelectedField && changeValueOfSelectedField(bet.id)
-  }
+const Bet: FC<Props> = ({addBet,changeSelected, bet, name}) => {
 
-  const classList = [
-    "bet",
-    bet.selected && "selected"
-  ].filter(Boolean).join(" ");
+  const handleBetClick = (bet: IBet) => {
+    addBet && addBet(bet);
+    changeSelected && changeSelected(bet.id);
+  }
 
   return (
     <div
       data-bet-id={bet.id}
-      className={classList}
+      className={classList([
+        "bet",
+        bet.selected && "selected",
+        bet.disabled && "disabled",
+        !(name || bet.name) && "one-value"])}
       onClick={() => handleBetClick(bet)}
     >
-      <span>{name || bet.name}</span>
+      {name || bet.name ? <span>{name || bet.name}</span> : null}
       <span>{bet.odd}</span>
     </div>
   );
@@ -39,11 +38,11 @@ const Bet: FC<Props> = ({addBet,changeValueOfSelectedField, bet, name, }) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     addBet: (bet: IBet) => dispatch(addBet(bet)),
-    changeValueOfSelectedField: (id: number) => dispatch(changeValueOfSelectedField(id)),
+    changeSelected: (id: number) => dispatch(changeBetSelected(id)),
   }
 }
 
 export default connect(
-  ({betSlip}: IStore) => ({betSlip}),
+  ({bets}: IStore) => ({bets}),
   mapDispatchToProps
 )(Bet);

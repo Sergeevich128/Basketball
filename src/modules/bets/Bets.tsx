@@ -8,36 +8,72 @@ import {IDeviceInfo} from "./deviceInfo";
 import Tabs from "./tabs/Tabs";
 
 interface Props {
-  bets: IBetsState;
-  deviceInfo: IDeviceInfo;
+    bets: IBetsState;
+    deviceInfo: IDeviceInfo;
 }
 
-const orderList: { [key: number]: number[] } = {
-  1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  2: [1, 4, 5, 8, 9],
-  3: [2, 6, 10],
-  4: [3, 6, 7]
-}
+const Bets: FC<Props> = ({bets, deviceInfo}) => {
 
-const Bets: FC<Props> = ({bets, deviceInfo}) => (
-  <div className="menu-bets">
-    <Tabs/>
-    <div className={"bet-groups" + (deviceInfo.isDesktop ? "" : " mobile")}>
-      <div>{bets.betGroupsLeft
-        .filter((group) => orderList[bets.activeTabId].includes(group.id))
-        .map((group: IGroup) => <BetGroup key={group.id} name={group.name}
-                                          subgroups={group.subgroups}/>)}</div>
-      <div>{bets.betGroupsRight
-        .filter((group) => orderList[bets.activeTabId].includes(group.id))
-        .map((group: IGroup) => <BetGroup key={group.id} name={group.name}
-                                          subgroups={group.subgroups}/>)}</div>
-    </div>
-  </div>
-);
+    const activeGroup:any = (bets.betsTemplate.filter((group) => {
+        return group.name === bets.activeTab;
+    }))
+
+    return (
+        <div className="menu-bets">
+            <Tabs/>
+            <div className={"bet-groups" + (deviceInfo.isDesktop ? "" : " mobile")}>
+
+                {deviceInfo.isDesktop ?
+                    <>
+                        <div>{bets.betGroups
+                            .filter((group) => activeGroup[0].options.colsGroups.large[0].includes(group.id))
+                            // .sort((gr1, gr2) => {
+                            //     const sortArr = orderList[bets.activeTab].desk[0];
+                            //     return sortArr.indexOf(gr1.id) - sortArr.indexOf(gr2.id)
+                            // })
+                            .map((group: IGroup) =>
+                                <BetGroup
+                                    key={group.id}
+                                    name={group.name}
+                                    subgroups={group.subGroups}
+                                    betTypes={group.betTypes}
+                                />
+                            )}
+                        </div>
+                        <div>{bets.betGroups
+                            .filter((group) =>  activeGroup[0].options.colsGroups.large[1].includes(group.id))
+                            // .sort((gr1, gr2) => {
+                            //     const sortArr = orderList[bets.activeTab].desk[1];
+                            //     return sortArr.indexOf(gr1.id) - sortArr.indexOf(gr2.id)
+                            // })
+                            .map((group: IGroup) =>
+                                <BetGroup
+                            key={group.id}
+                            name={group.name}
+                            subgroups={group.subGroups}
+                            betTypes={group.betTypes}
+                            />)}</div>
+                    </>
+                    : <div>{bets.betGroups
+                        .filter((group) =>  activeGroup[0].options.colsGroups.small[0].includes(group.id))
+                        .map((group: IGroup) =>
+                            <BetGroup
+                                key={group.id}
+                                name={group.name}
+                                subgroups={group.subGroups}
+                                betTypes={group.betTypes}
+                            />
+                        )}
+                    </div>
+                }
+            </div>
+        </div>
+    );
+};
 
 export default connect(
-  ({bets, deviceInfo}: IStore) => ({
-    bets,
-    deviceInfo
-  })
+    ({bets, deviceInfo}: IStore) => ({
+        bets,
+        deviceInfo
+    })
 )(Bets);

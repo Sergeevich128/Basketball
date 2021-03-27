@@ -1,0 +1,33 @@
+.selected-bet-input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    width: 77px;
+    height: 32px;
+    background: #1F2123;
+    border: 1px solid #121212;
+    border-radius: 2px;
+    padding-right: 6px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    outline: none;
+    color: white;
+}
+
+.selected-bet-input.active {
+    border: 1px solid #EB460C;
+    background: #48281E;
+}
+
+.selected-bet-input.active span {
+    padding: 0 1px 0 3px;
+    background: #EB460C;
+}
+.bet-slip-header[class*="error"] .selected-bet-input,
+[class*="error"] .selected-bet-input {
+    background: #4b2729;
+    border: 1px solid #FD4141;
+}

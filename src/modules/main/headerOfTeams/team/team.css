@@ -1,9 +1,12 @@
 .teams {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
-.teams h4 {
+.teams span {
+    text-align: center;
+    line-height: 1.23;
     color: white;
     text-transform: uppercase;
 }
@@ -31,11 +34,11 @@
 
 @media (max-width: 991px) {
     .teams {
-        width: 343px;
         height: 157px;
+        max-width: 450px;
     }
 
-    .teams h4 {
+    .teams span {
         font-size: 13px;
         line-height: 15px;
     }
@@ -112,7 +115,7 @@
         flex-direction: column;
     }
 
-    .teams h4 {
+    .teams span {
         position: absolute;
         top: 14px;
     }
@@ -136,14 +139,11 @@
         width: 100%;
     }
 
-    .teams h4 {
+    .teams span {
         font-size: 18px;
         font-weight: 500;
         line-height: 21px;
         width: 162px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .teams .team {
@@ -153,7 +153,8 @@
         align-items: center;
     }
 
-    .teams .team:first-child h4 {
+    .teams .team:first-child span {
         order: 1;
+        margin-left: auto;
     }
 }

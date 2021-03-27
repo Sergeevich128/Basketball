@@ -8,8 +8,8 @@ menu {
     opacity: 0;
     position: absolute;
     transition: .2s;
-    left: -8px;
     top: 0;
+    left: -8px;
     box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.8);
 }
 
@@ -44,26 +44,13 @@ menu .menu-item:hover {
     transition: .2s;
 }
 
-.sandwich-open menu {
+.sandwich.open menu {
     visibility: visible;
     z-index: 10;
     opacity: 1;
     top: 64px;
-    left: 0;
     transition: .2s;
     background: #ffffff;
-}
-
-.sandwich-open::before {
-    content: "";
-    position: absolute;
-    top: 64px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 5;
-    background: rgba(0, 0, 0, 0.6);
-    pointer-events: none;
 }
 
 .sandwich-icon {
@@ -126,6 +113,10 @@ menu .menu-item:hover {
 }
 
 @media (max-width: 991px) {
+    menu {
+        left: -19px;
+    }
+
     .sandwich-icon {
         height: 18px;
         margin-right: 19px;
@@ -136,17 +127,13 @@ menu .menu-item:hover {
         height: 4px;
     }
 
-    .sandwich-open menu {
-        top: 60px;
-    }
-
-    .sandwich-open::before {
-        top: 60px;
+    .sandwich.open menu {
+        top: 40px;
     }
 }
 
-@media (min-width: 993px) {
-    .sandwich-open::before {
-        position: fixed;
+@media (min-width: 992px) {
+    .sandwich.open menu {
+        top: 42px;
     }
 }

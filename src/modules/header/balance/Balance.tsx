@@ -10,7 +10,7 @@ interface Props {
 
 const Balance:FC<Props> = ({userBalance}) => {
   return (
-    <div className="balance">{userBalance.currency} {userBalance.value}</div>
+    <div className="balance">{userBalance.currency}{userBalance.value}</div>
   );
 };
 

@@ -1,87 +1,88 @@
-import React, {FC, useRef, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import "./betSlip.css"
-import BetSlipHeader from "./betSlipHeader/BetSlipHeader";
 import SelectedBets from "./selectedBets/SelectedBets";
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
-import {ISelectedBet, IStateBetSlip} from "./betSlipReducer";
+import {IStateBetSlip} from "./betSlipReducer";
+import {IDeviceInfo} from "../../bets/deviceInfo";
+import BetSlipBtns from "./betSlipBtns/betSlipBtns";
+import {changeTotalBet} from "./actions";
+import {classList} from "../../../core/constants";
+import {IBetsState} from "../../bets/betsReducer";
 
 interface Props {
-  betSlip: IStateBetSlip;
+    betSlip: IStateBetSlip;
+    deviceInfo: IDeviceInfo;
+    changeTotalBet: Function;
+    bets: IBetsState;
 }
 
-const BetSlip: FC<Props> = ({betSlip}) => {
-  const betsLength = betSlip.selectedBets.length
-  const betSlipWrapper = useRef<HTMLDivElement>(null);
-  const [isOpened, setBetSlipOpen] = useState<boolean>(false);
+const BetSlip: FC<Props> = ({betSlip, deviceInfo, bets, changeTotalBet}) => {
+    const betsLength = betSlip.selectedBets.length;
+    const betSlipWrapper = useRef<HTMLDivElement>(null);
+    const mainRef = useRef<HTMLElement>(null);
+    const [isOpened, setBetSlipOpen] = useState<boolean>(false);
 
-  const classList = [
-    "bet-slip",
-    (isOpened && betsLength) && "opened",
-    (betsLength && betsLength <= 2 && !isOpened) && "mini",
-    (betsLength > 2 && !isOpened) && "bet-slip-btn-show"
-  ].filter(Boolean).join(" ");
 
-  let sumSelectedBetsValue = 0;
-  let possibleWin = 0;
+    useEffect(() => {
+        // @ts-ignore
+        mainRef.current = document.getElementsByTagName("main")[0];
+        handleTransitionend();
+        betSlipWrapper.current?.addEventListener("transitionend", handleTransitionend);
+        return () => {
+            betSlipWrapper.current?.removeEventListener("transitionend", handleTransitionend);
+        }
+    }, [])
 
-  const header = document.getElementsByTagName("header")[0];
 
-  if (isOpened) {
-    header?.classList.add("sticky")
-  } else {
-    header?.classList.remove("sticky")
-  }
+    // if (betSlipWrapper.current?.classList.contains("bet-slip-btn-show")) {mainRef.current.style.paddingBottom = "71"}
+    // if (betSlipWrapper.current?.className === "bet-slip") {mainRef.current.style.paddingBottom = "0"}
+    // mainRef.current.style.paddingBottom = `${betSlipWrapper.current?.scrollHeight}px`;
+    const handleTransitionend = () => {
+        if (mainRef.current && !deviceInfo.isDesktop) {
+            mainRef.current.style.paddingBottom = `${betSlipWrapper.current?.scrollHeight}px`;
+            if (betSlipWrapper.current?.className === "bet-slip") mainRef.current.style.paddingBottom = `0`;
+        }
+    }
 
-  const selectedBetsValue = () => {
-    betSlip.selectedBets.map((selectedBet: ISelectedBet) => {
-      return sumSelectedBetsValue += +selectedBet.value
-    })
-  }
+        return (
+            <div
+                ref={betSlipWrapper}
+                className={classList([
+                    "bet-slip",
+                    // isMaxMaxError && "error-max-max",
+                    (betsLength && (deviceInfo?.isDesktop || isOpened)) && "opened", // show bet slip area
+                    (betsLength && betsLength <= 2 && !isOpened) && "mini", // show 2 bets on mob in the bottom
+                    (betsLength > 2 && !isOpened) && "bet-slip-btn-show" // show "bet slip" btn
+                ])}
+            >
+                <div className="selected-bets">
+                    <SelectedBets
+                        isOpened={isOpened}
+                        setBetSlipOpen={setBetSlipOpen}
+                        handleTransitionend={handleTransitionend}
+                    />
+                </div>
+                <BetSlipBtns
+                    setBetSlipOpen={setBetSlipOpen}
+                />
 
-  const calcPossibleWin = () => {
-    betSlip.selectedBets.map((selectedBet: ISelectedBet) => {
-      return possibleWin += +(selectedBet.value * selectedBet.odd).toFixed(2);
-    })
-  }
+            </div>
+        );
+    };
 
-  selectedBetsValue()
-  calcPossibleWin()
+    const mapDispatchToProps = (dispatch: any) => {
+        return {
+            changeTotalBet: (totalBet: number) => dispatch(changeTotalBet(totalBet)),
+        }
+    }
 
-  return (
-    <div
-      ref={betSlipWrapper}
-      className={classList}
-    >
-        <BetSlipHeader>
-          <div
-            className="remove-selected-bet"
-            onClick={() => setBetSlipOpen(false)}
-          />
-        </BetSlipHeader>
-      <div className="selected-bets">
-        <SelectedBets
-          setBetSlipOpen={setBetSlipOpen}
-        />
-      </div>
-      <div className="bet-slip-btns">
-        <div onClick={() => setBetSlipOpen(true)}>
-          <span className="selected-bets-counter">{betSlip.selectedBets.length}</span>Bet Slip
-        </div>
-        <button>
-          <div className="start-match">Start Match!</div>
-          <div>
-            <span className="total-bet-info">Total Bet: FUN {sumSelectedBetsValue}</span>
-            <span className="possible-win-info">Est.: FUN {possibleWin.toFixed(2)}</span>
-          </div>
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default connect(
-  ({betSlip}: IStore) => ({
-    betSlip
-  }),
-)(BetSlip);
+    export default connect(
+        ({betSlip, bets, deviceInfo, userBalance}: IStore) => ({
+            betSlip,
+            deviceInfo,
+            userBalance,
+            bets
+        }),
+        mapDispatchToProps
+    )(BetSlip);

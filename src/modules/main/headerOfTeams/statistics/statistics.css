@@ -23,7 +23,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    transform: translate(0px);
+    transform: translate(0);
     transition: .3s;
 }
 
@@ -45,15 +45,15 @@
         top: 78px;
     }
 
-    .header-of-teams.old-match-statistics-visible .statistics .progress-circle {
+    .header-of-teams.last-results-visible .statistics .progress-circle {
         transition-delay: .2s;
     }
 
-    .header-of-teams.switch-teams.old-match-statistics-visible .statistics .progress-circle {
+    .header-of-teams.switch-teams.last-results-visible .statistics .progress-circle {
         transition-delay: 0s;
     }
 
-    .header-of-teams.old-match-statistics-visible .statistics .progress-circle {
+    .header-of-teams.last-results-visible .statistics .progress-circle {
         transition: .16s;
         transition-delay: 0s;
         visibility: hidden;
@@ -71,7 +71,7 @@
         transition: .4s;
     }
 
-    .header-of-teams.old-match-statistics-visible .statistics .progress-circle:first-child ,
+    .header-of-teams.last-results-visible .statistics .progress-circle:first-child ,
     .header-of-teams.show-statistics .progress-circle:first-child,
     .header-of-teams.switch-teams .progress-circle:first-child {
         transform: translateX(-50px);
@@ -79,7 +79,7 @@
         opacity: 0;
     }
 
-    .header-of-teams.old-match-statistics-visible .statistics .progress-circle:last-child,
+    .header-of-teams.last-results-visible .statistics .progress-circle:last-child,
     .header-of-teams.show-statistics .progress-circle:last-child,
     .header-of-teams.switch-teams .progress-circle:last-child {
         transform: translateX(50px);
@@ -94,4 +94,10 @@
         top: 44px;
         left: calc(50% - 101px);
     }
+
+    .header-of-teams.switch-teams .statistics .progress-circle {
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+
 }

@@ -4,12 +4,17 @@
     box-sizing: border-box;
 }
 
+html, body, #root {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     margin: 0;
     font-family: 'Rubik', sans-serif;
     font-style: normal;
     font-weight: 500;
-    background: url("data/images/bg1.png");
+    background: url("data/images/bg1.png") no-repeat center;
     background-size: cover;
 }
 

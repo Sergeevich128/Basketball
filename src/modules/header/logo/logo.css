@@ -1,5 +1,11 @@
 .logo {
-    width: 92px;
-    height: 39px;
-    background: url("./../../../data/images/logo.png");
+    width: 150px;
+}
+
+.a {
+    fill:#ff5100;
+}
+
+.b {
+    fill:#fff;
 }

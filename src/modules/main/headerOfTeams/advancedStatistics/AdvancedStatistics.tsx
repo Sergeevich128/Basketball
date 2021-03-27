@@ -1,37 +1,36 @@
 import React, {FC} from 'react';
-import {IStatistics} from "../teamsInfo";
 import './advancedStatictics.css';
+import {IAdvancedStatistic} from "../teamsInfo";
 
 interface Props {
-  team: IStatistics;
+    statistics: IAdvancedStatistic;
 }
 
-const teamNames: { [key: string]: string[] } = {
-  ats: ["ATS", "ATS"],
-  margin: ["MARGIN", "AVG MARGIN"],
-  uo: ["U/O", "U/O"],
-  full: ["FULL", "AVG FULL"],
-  half: ["HALF", "AVG HALF"]
-}
+const teamNames: Array<string> = [
+  "ATS",
+  "U/O",
+  "MARGIN",
+  "FULL",
+  "HALF"
+]
 
-const AdvancedStatistics: FC<Props> = ({team}) => (
+const AdvancedStatistics: FC<Props> = ({statistics}) => (
   <div className="advanced-statistics">
-    <div>
-      {Object.entries(team).map(([key, value], index) => {
-        return <div key={index}>
-          <span>{teamNames[key][1]}</span>
-          <span>{value}</span>
-        </div>
-      })}
-    </div>
-    <div>
-      {Object.entries(team).map(([key, value], index) => {
-        return <div key={index}>
-          <span>{teamNames[key][0]}</span>
-          <span>{value}</span>
-        </div>
-      })}
-    </div>
+    {statistics ? Object.entries(statistics).map(([key, value], index) => {
+      return <div key={index}>
+        <span>{teamNames[index]}</span>
+        <span>{value}</span>
+      </div>
+    }) : null}
+
+    {/*<div>*/}
+    {/*  {Object.entries(statistics).map(([key, value], index) => {*/}
+    {/*    return <div key={index}>*/}
+    {/*      <span>{teamNames[key][0]}</span>*/}
+    {/*      <span>{value}</span>*/}
+    {/*    </div>*/}
+    {/*  })}*/}
+    {/*</div>*/}
   </div>
 );
 

@@ -1,132 +1,156 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import './main..css'
+import SimpleBar from "simplebar-react";
 import {connect} from 'react-redux';
 import {IStore} from "../../index";
-import {changeDefaultStake} from "./betSlip/actions";
-import {IStateBetSlip} from "./betSlip/betSlipReducer";
+import {classList, platform_token, requestData} from "../../core/constants"
+import {changeDefaultStake, removeSelectedBet} from "./betSlip/actions";
 import Bets from "../bets/Bets";
 import Team from "./headerOfTeams/team/Team";
 import TeamBets from "../bets/TeamBets/TeamBets";
 import ChangeMatch from "./headerOfTeams/sliderChangeMatch/ChangeMatch";
-import AdvancedStatistics from "./headerOfTeams/advancedStatistics/AdvancedStatistics";
-import {IOldMatchStatistic, ITeam} from "./headerOfTeams/teamsInfo";
-import Statistics from "./headerOfTeams/statistics/Statistics";
+import {ITeamsState} from "./headerOfTeams/teamsInfo";
 import AdvancedButton from "./headerOfTeams/advancedBtn/AdvancedButton";
-import OldMatchStatistics from "./headerOfTeams/oldMatchStatistics/OldMatchStatistics";
+import LastResults from "./headerOfTeams/lastResults/LastResults";
 import Last from "./headerOfTeams/last/Last";
-import {pressNextBtn, pressPrevBtn} from "./headerOfTeams/actions";
+import {setActiveTeams, setStatistics} from "./headerOfTeams/actions";
+import {IDeviceInfo} from "../bets/deviceInfo";
 import BetSlip from "./betSlip/BetSlip";
-import changeOldMatchStatisticsClass from "./mainTimeouts";
+import Statistics from "./headerOfTeams/statistics/Statistics";
+import AdvancedStatistics from "./headerOfTeams/advancedStatistics/AdvancedStatistics";
+import {setBets} from "../bets/actions";
 
 interface Props {
-  betSlip: IStateBetSlip;
-  pressPrevBtn: Function;
-  pressNextBtn: Function;
-  teamLeft: ITeam;
-  teamRight: ITeam;
-  oldMatchStatistics: IOldMatchStatistic;
-  history: Array<Array<number>>;
+    deviceInfo: IDeviceInfo;
+    setActiveTeams: Function;
+    setStatistics: Function;
+    removeSelectedBet: Function;
+    setBets: Function;
+    teamsInfo: ITeamsState;
 }
 
-const Main: FC<Props> = ({history, pressPrevBtn, pressNextBtn, betSlip, teamLeft, teamRight, oldMatchStatistics}) => {
+const Main: FC<Props> = ({teamsInfo,setStatistics,setActiveTeams, deviceInfo, setBets, removeSelectedBet}) => {
 
-  const headerOfTeamsRef = useRef<HTMLDivElement>(null);
+    const headerOfTeamsRef = useRef<HTMLDivElement>(null);
 
-  let canSwitch = false;
-  const [isSwitchTeams, setSwitchTeamsClass] = useState<boolean>(false);
-  const [isOldMatchStatistics, setOldMatchStatisticsClass] = useState<boolean>(false);
+    let canSwitch = false;
+    const [isSwitchTeams, setSwitchTeamsClass] = useState<boolean>(false);
+    const [isLastResults, setIsLastResults] = useState<boolean>(false);
+    const [isStatistics, setStaticsClass] = useState<boolean>(false);
 
-  useEffect(() => {
-    changeOldMatchStatisticsClass(setOldMatchStatisticsClass, isOldMatchStatistics)
-  }, [isOldMatchStatistics]);
+    useEffect(() => {
+        const intervalID = window.setInterval(() => {
+            setIsLastResults((isOld) => !isOld)
+        }, 4000)
+        return () => clearInterval(intervalID)
+    }, []);
 
-  if (isSwitchTeams) {
-    setTimeout(() => {
-      setSwitchTeamsClass(false)
-    }, 500)
-  }
-
-  setTimeout(() => {
-    canSwitch = true
-  }, 1000)
-
-  const classList = [
-    "header-of-teams",
-    isOldMatchStatistics && "old-match-statistics-visible",
-    isSwitchTeams && "switch-teams",
-  ].filter(Boolean).join(" ")
-
-  const changePrev = () => {
-    if (history.length !== 1) {
-      if (canSwitch) {
-        setSwitchTeamsClass(true)
-
+    if (isSwitchTeams) {
         setTimeout(() => {
-          pressPrevBtn()
-        }, 450)
-      }
+            setSwitchTeamsClass(false)
+        }, 500)
     }
-  }
 
-  const changeNext = () => {
-    if (canSwitch) {
-      setSwitchTeamsClass(true)
+    setTimeout(() => {
+        canSwitch = true
+    }, 1000)
 
-      setTimeout(() => {
-        pressNextBtn()
-      }, 450)
+    const changePrev = () => {
+            if (canSwitch) {
+                setSwitchTeamsClass(true)
+                removeSelectedBet(-1);
+
+                setTimeout(() => {
+                    requestData(`https://qa-virtuals-kyt_bask2.leap-gaming.com/virtualBasketballInstant/game/newEvent?rebet=0&platform_token=${platform_token}`)
+                        .then(data => {
+                            setActiveTeams(data.data.assets)
+                            setStatistics(data.data.statistics);
+                            setBets(data.data.bets);
+                        })
+                }, 200)
+            }
     }
-  }
 
-  const showAdvancedStatistics = () => {
-    headerOfTeamsRef?.current?.classList.toggle('show-statistics');
-  }
+    const changeNext = () => {
+        if (canSwitch) {
+            setSwitchTeamsClass(true);
+            removeSelectedBet(-1);
 
-  return (
-    <main>
-      <div ref={headerOfTeamsRef} className={classList}>
-        <ChangeMatch changeNext={changeNext} changePrev={changePrev}/>
-        <div className="teams">
-          <Team sideOfShadow="left" team={teamLeft}/>
-          <Team sideOfShadow="right" team={teamRight}/>
-        </div>
-        <Last/>
-        <div className="statistics">
-          <Statistics strength={teamLeft.strength}/>
-          <Statistics strength={teamRight.strength}/>
-        </div>
-        <OldMatchStatistics statistics={oldMatchStatistics}/>
-        <AdvancedButton showAdvancedStatistics={showAdvancedStatistics}/>
-        <div className="advanced-statistics-wrapper">
-          <AdvancedStatistics team={teamLeft.statistics}/>
-          <AdvancedStatistics team={teamRight.statistics}/>
-        </div>
-        <TeamBets/>
-      </div>
-      <div className="bets-zone">
-        <Bets/>
-        <BetSlip/>
-      </div>
-    </main>
-  );
+            setTimeout(() => {
+                requestData(`https://qa-virtuals-kyt_bask2.leap-gaming.com/virtualBasketballInstant/game/newEvent?rebet=-1&platform_token=${platform_token}`)
+                    .then(data => {
+                        setActiveTeams(data.data.assets)
+                        setStatistics(data.data.statistics);
+                        setBets(data.data.bets);
+                    })
+            }, 200)
+        }
+    }
+
+    const showAdvancedStatistics = () => {
+        isStatistics ? setStaticsClass(false) : setStaticsClass(true);
+    }
+
+    const content = <>
+        <main>
+
+            <div ref={headerOfTeamsRef} className={classList([
+                "header-of-teams",
+                isStatistics && "show-statistics",
+                isLastResults && "last-results-visible",
+                isSwitchTeams && "switch-teams",
+            ])}>
+                <ChangeMatch changeNext={changeNext} changePrev={changePrev}/>
+                <div className="teams">
+                    <Team sideOfShadow="left" team={teamsInfo.teams[teamsInfo.activeTeams[0]]}/>
+                    <Team sideOfShadow="right" team={teamsInfo.teams[teamsInfo.activeTeams[1]]}/>
+                </div>
+                <Last/>
+                <div className="statistics">
+                    <Statistics strength={teamsInfo.teams[teamsInfo.activeTeams[0]]?.strength}/>
+                    <Statistics strength={teamsInfo.teams[teamsInfo.activeTeams[1]]?.strength}/>
+                </div>
+                <LastResults lastResults={teamsInfo.lastResults}/>
+                <AdvancedButton showAdvancedStatistics={showAdvancedStatistics}/>
+                <div className={classList(["advanced-statistics-wrapper", !deviceInfo.isDesktop && "mobile"])}>
+                    <AdvancedStatistics statistics={teamsInfo.advancedStatistics[0]}/>
+                    <AdvancedStatistics statistics={teamsInfo.advancedStatistics[1]}/>
+                </div>
+                <TeamBets/>
+            </div>
+            <div className="bets-zone">
+                <Bets/>
+                {deviceInfo.isDesktop ? <BetSlip/> : null}
+            </div>
+        </main>
+    </>
+
+    return (
+        <>
+            {deviceInfo.isDesktop ?
+                <SimpleBar style={{height: window.innerHeight}} autoHide={false}>
+                    {content}
+                </SimpleBar> :
+                content
+            }
+        </>
+    );
 };
 
 const mapDispatchToProps = (dispatch: any) => {
-  return {
-    changeDefaultStake: (stake: any) => dispatch(changeDefaultStake(stake)),
-    pressPrevBtn: () => dispatch(pressPrevBtn()),
-    pressNextBtn: () => dispatch(pressNextBtn()),
-  }
+    return {
+        changeDefaultStake: (stake: any) => dispatch(changeDefaultStake(stake)),
+        setActiveTeams: (teams: Object) => dispatch(setActiveTeams(teams)),
+        removeSelectedBet: (id: number) => dispatch(removeSelectedBet(id)),
+        setStatistics: (lastResults: Array<[number]>) => dispatch(setStatistics(lastResults)),
+        setBets: (bets: Object) => dispatch(setBets(bets)),
+    }
 }
 
 export default connect(
-  ({betSlip, teamsInfo, deviceInfo}: IStore) => ({
-    betSlip,
-    oldMatchStatistics: teamsInfo.oldMatchStatistics.Anadolu_Zalgiris,
-    teamLeft: teamsInfo.teams[teamsInfo.history[teamsInfo.history.length - 1][0]],
-    teamRight: teamsInfo.teams[teamsInfo.history[teamsInfo.history.length - 1][1]],
-    history: teamsInfo.history,
-    deviceInfo
-  }),
-  mapDispatchToProps
+    ({teamsInfo, deviceInfo}: IStore) => ({
+        deviceInfo,
+        teamsInfo
+    }),
+    mapDispatchToProps
 )(Main);

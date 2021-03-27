@@ -15,7 +15,7 @@ const MenuSandwich = () => {
   }, []);
 
   return (
-    <div ref={menuRef} className={"sandwich" + (isMenuOpen ? "-open" : "")}>
+    <div ref={menuRef} className={"sandwich" + (isMenuOpen ? " open" : "")}>
       <div onClick={() => setIsMenuOpen((setIsMenuOpen) => !setIsMenuOpen)} className="sandwich-icon">
         <span/>
         <span/>

@@ -12,11 +12,11 @@
     justify-content: flex-end;
 }
 
-.advanced-statistics-wrapper .advanced-statistics:nth-child(2n+1) div div:nth-child(-n+3) span:last-child {
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n+1)  div:nth-child(-n+3) span:last-child {
     color: #EB460C;
 }
 
-.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div:nth-child(-n+3) span:last-child {
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div:nth-child(-n+3) span:last-child {
     color: #6B7783;
 }
 
@@ -35,16 +35,16 @@
     color: #EB460C;
 }
 
-.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div {
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div {
     transform: rotateY(180deg);
 }
 
-.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div span {
+.advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div span {
     justify-content: flex-start;
     transform: rotateY(-180deg);
 }
 
-.advanced-statistics div div {
+.advanced-statistics div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@
     }
 
     .header-of-teams .advanced-statistics-wrapper,
-    .header-of-teams.old-match-statistics-visible .advanced-statistics-wrapper {
+    .header-of-teams.last-results-visible .advanced-statistics-wrapper {
         transform: translateY(-80px);
     }
 
@@ -77,7 +77,7 @@
         transition-delay: .2s;
     }
 
-    .advanced-statistics > div:first-child {
+    .advanced-statistics-wrapper.mobile .advanced-statistics:first-child span:first-child {
         display: none;
     }
 
@@ -85,7 +85,7 @@
         display: none;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div span {
+    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div span {
         padding-right: 5px;
     }
 
@@ -104,23 +104,23 @@
         border-right: 3px solid transparent;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n+1) div div:nth-child(-n+3) span:last-child {
+    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n+1)  div:nth-child(-n+3) span:last-child {
         position: absolute;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(1) span:last-child {
+    .advanced-statistics-wrapper .advanced-statistics:first-child  div:nth-child(1) span:last-child {
         left: 6px;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(2) span:last-child {
-        left: -8px;
+    .advanced-statistics-wrapper .advanced-statistics:first-child  div:nth-child(2) span:last-child {
+        left: 3px;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(3) span:last-child {
-        left: 4px;
+    .advanced-statistics-wrapper .advanced-statistics:first-child  div:nth-child(3) span:last-child {
+        left: -5px;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:first-child div div:nth-child(4) span:last-child {
+    .advanced-statistics-wrapper .advanced-statistics:first-child  div:nth-child(4) span:last-child {
         position: absolute;
         left: 3px;
     }
@@ -132,11 +132,11 @@
         left: calc(50% - 315.5px);
     }
 
-    .advanced-statistics > div:last-child {
-        display: none;
-    }
+    /*.advanced-statistics > div:last-child {*/
+    /*    display: none;*/
+    /*}*/
 
-    .advanced-statistics div div {
+    .advanced-statistics div  {
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -161,7 +161,7 @@
         color: #6B7783;
     }
 
-    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div div:nth-child(-n+3) span:last-child {
+    .advanced-statistics-wrapper .advanced-statistics:nth-child(2n) div:nth-child(-n+3) span:last-child {
         color: #D7D7D7;
     }
 

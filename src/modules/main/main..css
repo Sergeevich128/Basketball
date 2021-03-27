@@ -1,21 +1,20 @@
+.main-simplebar .simplebar-content-wrapper {
+    height: 100%;
+    max-height: 100%;
+}
+
 main {
+    width: 100%;
     max-width: 1312px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 11px auto 0;
-    overflow: hidden;
-    padding-bottom: 8px;
+    margin: 60px auto 0;
+    height: calc(100% - 60px);
+    transition: .3s;
 }
 
 .bets-zone {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-}
-
-.bets-zone .selected-bet-input {
-    padding-left: 6px;
 }
 
 .header-of-teams {
@@ -26,14 +25,19 @@ main {
 
 @media (max-width: 991px) {
     main {
-        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .bets-zone {
+        flex-direction: column;
     }
 
     .header-of-teams {
         height: 246px;
         flex-direction: column;
         align-items: center;
-        padding: 3px 10px 13px;
+        padding: 3px 0 13px;
         background: url("../../data/images/bg_mobile.png") no-repeat center;
         background-size: cover;
         user-select: none;
@@ -41,6 +45,15 @@ main {
 }
 
 @media (min-width: 992px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        margin: 64px auto 0;
+        padding-bottom: 50px;
+    }
+
     .header-of-teams {
         height: 138px;
         justify-content: center;
@@ -57,6 +70,10 @@ main {
 }
 
 @media (min-width: 1312px) {
+    main {
+        padding-top: 24px;
+    }
+
     .header-of-teams {
         max-width: 1312px;
         height: 138px;

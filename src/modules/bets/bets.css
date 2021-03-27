@@ -1,6 +1,7 @@
 .bet-groups {
     display: flex;
     justify-content: space-between;
+    min-height: calc(100vh - 386px);
     background: #1F2123;
     font-family: 'Open Sans', sans-serif;
 }
@@ -19,6 +20,7 @@
 
 .group h3 svg {
     margin-right: 15px;
+    cursor: pointer;
 }
 
 .group .open-group {
@@ -57,8 +59,17 @@
     height: 20px;
 }
 
-.group div:last-child > div {
+.group .subgroup {
     width: 100%;
+}
+
+.subgroup.single .bets {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.subgroup.single .bet {
+    width: 50%;
 }
 
 .tabs img {
@@ -88,30 +99,43 @@
     background: #146734;
 }
 
-.bets-zone .bet {
+.bet {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 48px;
     box-sizing: border-box;
-    border-bottom: 2px solid #EAEAEA;
     padding: 0 12px;
     background: #fff;
     cursor: pointer;
+}
+
+.subgroup .bet.one-value {
+    justify-content: center;
+}
+
+.subgroup .bet:not(:last-child) {
+    border-bottom: 2px solid #EAEAEA;
 }
 
 .subgroups {
     display: flex;
     transition: .3s;
     overflow: hidden;
+    background: #eaeaea;
 }
 
+.subgroup.single .bets .bet:nth-child(2n),
 .subgroup:not(:first-of-type) .bet {
     border-left: 2px solid #EAEAEA;
 }
 
-.bet.selected {
+.subgroup .bet.selected {
     background: #EB460C;
+}
+
+.bet.disabled {
+    pointer-events: none;
 }
 
 .bet span {
@@ -162,6 +186,10 @@
 @media (min-width: 992px) {
     .menu-bets {
         min-width: 678px;
+    }
+
+    .bet:hover {
+        background: #FFD0B0;
     }
 }
 

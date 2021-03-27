@@ -1,26 +1,18 @@
 import {
   CHANGE_DEFAULT_STAKE,
-  CHANGE_INPUT_STAKE,
-  CHANGE_INPUT_STAKE_WITH_FAST_STAKE,
+  CHANGE_INPUT_STAKE, CHANGE_TOTAL_BET,
   REMOVE_BET,
-  REMOVE_LAST_NUM,
-  SELECT_TAB
+  SELECT_TAB, SET_BET_ERROR
 } from "../../../storages/constants";
 
-export const changeDefaultStake = (defaultStake: number) => ({
+export const changeDefaultStake = (defaultStake: string) => ({
   type: CHANGE_DEFAULT_STAKE,
   defaultStake
 });
 
-export const changeInputStake = (inputStake: any, id: number) => ({
+export const changeInputStake = (inputStake: string , id: number) => ({
   type: CHANGE_INPUT_STAKE,
   inputStake,
-  id
-});
-
-export const changeFastStake = (inputDefaultStake: any, id: number) => ({
-  type: CHANGE_INPUT_STAKE_WITH_FAST_STAKE,
-  inputDefaultStake,
   id
 });
 
@@ -29,12 +21,18 @@ export const removeSelectedBet = (id: number) => ({
   id
 });
 
-export const removeLastNum = (id: number) => ({
-  type: REMOVE_LAST_NUM,
-  id
+export const selectTab = (name: string) => ({
+  type: SELECT_TAB,
+  name
 });
 
-export const selectTab = (id: number) => ({
-  type: SELECT_TAB,
+export const setBetError = (errorType: string, id: number | string) => ({
+  type: SET_BET_ERROR,
+  errorType,
   id
-});
+})
+
+export const changeTotalBet = (totalBet: number) => ({
+  type: CHANGE_TOTAL_BET,
+  totalBet
+})

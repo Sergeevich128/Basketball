@@ -11,18 +11,20 @@ const Team: FC<Props> = ({team, sideOfShadow}) => {
   const [img, setImage] = useState(undefined);
 
   useEffect(() => {
-    selectTeam(`${team.firstName}_${team.lastName}`);
-  }, [team.id, team.firstName, team.lastName]);
+      if (team) {
+          selectTeam(`${team.name}`)
+      }
+  }, [team?.id, team?.name]);
 
   const selectTeam = (name: string) => {
-    if (sideOfShadow === "right") {
+    if (sideOfShadow === "right" && name) {
       import(`../../../../data/images/logosWithLeftShadow/${name}.png`)
         .then(image => {
           setImage(image.default)
         })
     }
 
-    if (sideOfShadow === "left") {
+    if (sideOfShadow === "left" && name) {
       import(`../../../../data/images/logosWithRightShadow/${name}.png`)
         .then(image => {
           setImage(image.default)
@@ -32,8 +34,8 @@ const Team: FC<Props> = ({team, sideOfShadow}) => {
 
   return (
     <div className="team">
-      <div style={{background: team.bgColor}} className={sideOfShadow === "right" ? "bgRectangleRight" : "bgRectangleLeft"}/>
-      <h4><span>{team.firstName}</span> <span>{team.lastName}</span></h4>
+      <div style={{background: team?.bgColor}} className={sideOfShadow === "right" ? "bgRectangleRight" : "bgRectangleLeft"}/>
+      <span>{team?.name}</span>
       {img && <img src={img} alt=""/>}
     </div>
   );

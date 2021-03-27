@@ -1,0 +1,255 @@
+.stake-accordion {
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    color: #595959;
+    transition: .2s;
+    transition-property: height;
+    font-weight: 400;
+}
+
+[class*="error"] .stake-accordion {
+    height: 51px;
+    overflow: visible;
+}
+
+.stake-accordion.show-keyboard {
+    height: 55px;
+    overflow: visible;
+}
+
+.bet-slip-header .stake-accordion.show-keyboard {
+    overflow: hidden;
+}
+
+[class*="error"] .stake-accordion.show-keyboard {
+    height: 103px;
+    overflow: visible;
+}
+
+[class*="error"] .stake-accordion .error-window {
+    height: 48px;
+}
+
+
+.error-window span {
+    display: none;
+}
+
+.error-max .error-window .max {
+    display: block;
+}
+
+.error-min .error-window .min {
+    display: block;
+}
+
+.error-max-max .error-window .max-max {
+    display: block;
+}
+
+.bet-slip-header .stake-accordion {
+    margin-top: -4px;
+    padding-top: 4px;
+}
+
+.bet-slip-header .stake-accordion.show-keyboard::after {
+    top: -5.5px;
+}
+
+.stake-accordion::after {
+    content: "";
+    position: absolute;
+    right: 82.5px;
+    top: -10px;
+    border: 5px solid transparent;
+    border-bottom: 5px solid #EB460C;
+}
+
+.stake-accordion::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #EB460C;
+}
+
+.stake-accordion .fast-stake {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    background: #E3E3E3;
+}
+
+.stake-accordion .fast-stake span,
+.stake-accordion .num,
+.stake-accordion .keyboard .back-btn,
+.stake-accordion .keyboard .confirm,
+.stake-accordion .keyboard .dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stake-accordion .fast-stake span {
+    width: 19%;
+    height: 46px;
+    border: 1px solid #C9C9C9;
+    background: #EAEAEA;
+    cursor: pointer;
+}
+
+.stake-accordion .fast-stake span.active {
+    background: #EB460C;
+    color: white;
+}
+
+.stake-accordion .num {
+    width: 20%;
+    height: 48px;
+    border-bottom: 1px solid #E3E3E3;
+}
+
+.stake-accordion .num:active {
+    background: #EB460C;
+    color: #ffffff;
+    transition: .15s;
+}
+
+.stake-accordion > div:not(.fast-stake) {
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.stake-accordion .error-window {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: .2s;
+    background: #FD4141;
+}
+
+.stake-accordion .error-window svg {
+    margin: 0 20px;
+}
+
+.stake-accordion .error-window span {
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+
+.error-min .stake-accordion,
+.error-max .stake-accordion {
+    height: 51px;
+    overflow: visible;
+}
+
+.bet-slip-header[class*="error"] .stake-accordion {
+    height: 55px;
+    overflow: hidden;
+}
+
+@media (max-width: 991px) {
+    .stake-accordion.show-keyboard {
+        height: 199px;
+    }
+
+    [class*="error-m"] .stake-accordion.show-keyboard {
+        height: 247px;
+    }
+
+    .bet-slip-header[class*="error-m"] .stake-accordion.show-keyboard {
+        height: 252px;
+    }
+
+    .stake-accordion .fast-stake {
+        font-size: 18px;
+        line-height: 21px;
+    }
+
+    .stake-accordion .keyboard {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        background: #EEEEEE;
+    }
+
+    .stake-accordion .keyboard div {
+        height: 48px;
+    }
+
+    .stake-accordion .keyboard .back-btn,
+    .stake-accordion .keyboard .confirm {
+        width: 40%;
+        border-left: 1px solid #E3E3E3;
+    }
+
+    .stake-accordion .keyboard .dot {
+        width: 20%;
+        position: relative;
+    }
+
+    .stake-accordion .num:not(:nth-child(1)):not(:nth-child(6)) {
+        border-left: 1px solid #E3E3E3;
+    }
+
+    .dot::before {
+        content: "";
+        width: 3px;
+        height: 3px;
+        position: absolute;
+        left: calc(50% - 3px);
+        bottom: 15px;
+        border-radius: 15px;
+        background: #595959;
+    }
+
+    .confirm,
+    .confirm .svg-confirm {
+        transition: .2s;
+    }
+
+    .confirm.active {
+        background: #56C7AC;
+    }
+
+    .confirm.active .svg-confirm {
+        fill: #FFFFFF;
+    }
+
+    .confirm.green {
+        background: #56C7AC;
+    }
+
+    .confirm.green .svg-confirm {
+        fill: #ffffff;
+    }
+}
+
+@media (min-width: 992px) {
+    .keyboard {
+        display: none;
+    }
+
+    .bet-slip-header .stake-accordion.show-keyboard {
+        height: 59px;
+    }
+
+    .bet-slip-header[class*="error"] .stake-accordion.show-keyboard {
+        height: 107px;
+        overflow: hidden;
+    }
+
+    .bet-slip-header .stake-accordion::after {
+        right: 18.9%;
+    }
+}
+
+
