@@ -27,11 +27,6 @@
     flex-direction: column;
 }
 
-.simplebar-content {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
 .simplebar-scrollbar.simplebar-visible::before {
     border-radius: 10px;
     width: 5px;

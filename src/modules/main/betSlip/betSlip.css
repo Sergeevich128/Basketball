@@ -3,6 +3,13 @@
     flex-direction: column;
     position: relative;
     transition: .4s;
+    z-index: 4;
+}
+
+div.bet-slip.hide {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: .58s;
 }
 
 .default-stake input {
@@ -18,6 +25,12 @@
 
 .wrapper-selected-bets {
     height: 100%;
+}
+
+.wrapper-selected-bets .simplebar-content {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
 }
 
 @media (max-width: 991px) {

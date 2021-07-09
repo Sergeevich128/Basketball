@@ -35,6 +35,11 @@ export const setBetsTemplate = (betsTemplate: Object) => ({
   betsTemplate,
 })
 
+// export const setBetGroupsLeftOrder = (element: HTMLElement) => ({
+//   type: SET_BET_GROUPS_LEFT_ORDER,
+//   element,
+// })
+
 export const setBets = (bets: Object) => ({
   type: SET_BETS,
   bets,

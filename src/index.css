@@ -14,11 +14,52 @@ body {
     font-family: 'Rubik', sans-serif;
     font-style: normal;
     font-weight: 500;
-    background: url("data/images/bg1.png") no-repeat center;
-    background-size: cover;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.simplebar-content {
+    height: 100%;
+}
+
+.backgrounds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.backgrounds div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: .33;
+    transition: opacity 0.3s linear 0.2s;
+}
+
+.backgrounds.up .upBG {
+    background: url("data/images/bg1.png") no-repeat center;
+    opacity: 1;
+    background-size: cover;
+}
+
+.backgrounds.run .runBG {
+    background: url("data/images/bg-after-game 1.png") no-repeat center;
+    opacity: 1;
+    background-size: cover;
+}
+
+.backgrounds.win .winBG {
+    background: url("data/images/bg-win.png") no-repeat center;
+    opacity: 1;
+    background-size: cover;
+}
+
+

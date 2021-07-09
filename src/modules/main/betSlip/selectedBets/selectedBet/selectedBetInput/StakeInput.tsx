@@ -47,6 +47,7 @@ const StakeInput: FC<Props> = ({stake, deviceInfo, betId, onStakeChange}) => {
     }, [])
 
 
+
     const showStakeAccordion = () => {
         setIsFocus(true)
         isSelectAllNumbers ? setSelectValue(false) : setSelectValue(true)

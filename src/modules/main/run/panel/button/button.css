@@ -1,0 +1,155 @@
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+.full-start-match {
+    width: 100%;
+    background: #EB460C;
+    font-size: 20px;
+    line-height: 24px;
+    color: white;
+}
+
+.outcome {
+    width: 60%;
+    background: #EB460C;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.skip div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.skip {
+    flex-basis: 100px;
+    flex-grow: 1;
+    margin-right: 7px;
+    background: #E3E3E3;
+    color: #26282B;
+    font-size: 16px;
+    line-height: 19px;
+    white-space: pre;
+    text-align: center;
+}
+
+.coupon-btn,
+.start-match-btn {
+    transition: .25s;
+}
+
+.next-match-btn,
+.start-match-btn {
+    flex-direction: column;
+    width: 100%;
+    background: #EB460C;
+    margin-left: auto;
+    border-radius: 2px;
+    font-size: 20px;
+    line-height: 19px;
+    color: white;
+    font-weight: 500;
+}
+
+.start-match-btn {
+    padding-top: 5px;
+}
+
+.total-bet-info,
+.possible-win-info {
+    font-family: "Open Sans";
+    font-weight: 600;
+    color: #121212;
+    font-size: 13px;
+    line-height: 18px;
+    text-transform: initial;
+}
+
+.total-bet-info {
+    margin-right: 9px;
+}
+
+.rebet-btn,
+.bet-slip.bet-slip-btn-show .coupon-btn {
+    background: #E3E3E3;
+    font-size: 14px;
+    line-height: 17px;
+    color: #26282B;
+    font-weight: 500;
+}
+
+.rebet-btn {
+    flex-grow: 1;
+    flex-basis: 130px;
+    justify-content: flex-start;
+    padding: 0 13px;
+    height: 57px;
+}
+
+.rebet-btn svg {
+    margin-right: 11px;
+}
+
+.result .next-match-btn {
+    height: 57px;
+}
+
+@media (max-width: 991px) {
+    .bet-slip.bet-slip-btn-show .start-match-btn {
+        width: 60%;
+    }
+
+    .bet-slip.bet-slip-btn-show .coupon-btn {
+        width: 38%;
+    }
+
+    .selected-bets-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28.33px;
+        height: 37px;
+        margin-right: 11.66px;
+        font-size: 16px;
+        line-height: 19px;
+        color: #EB460C;
+        background: url("./../../../../../data/images/betSlipIconMobile.png");
+    }
+
+    .coupon-btn {
+        width: 0;
+        overflow: hidden;
+    }
+
+    .bet-slip.bet-slip-btn-show .possible-win-info {
+        display: none;
+    }
+
+    .rebet-btn {
+        margin-right: 7px;
+    }
+}
+
+@media (min-width: 992px) {
+    .start-match-btn {
+        height: 71px;
+        width: 100%;
+        background: #EB460C;
+        cursor: pointer;
+        outline: none;
+        border: 7px solid black;
+        border-radius: 8px;
+    }
+
+    .coupon-btn {
+        display: none;
+    }
+}

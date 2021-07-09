@@ -26,7 +26,7 @@ interface Props {
     teamsInfo: ITeamsState;
 }
 
-const SelectedBet: FC<Props> = ({selectedBet, bets,teamsInfo, removeBet, deviceInfo, changeInputStake, handleTransitionend, userBalance, isOpened, changeValueOfSelectedField, disableBet, betSlip, setBetError}) => {
+const SelectedBet: FC<Props> = ({selectedBet, bets, teamsInfo, removeBet, deviceInfo, changeInputStake, handleTransitionend, userBalance, isOpened, changeValueOfSelectedField, disableBet, betSlip, setBetError}) => {
 
     const betRef = useRef<HTMLDivElement>(null);
     const marginRef = useRef<number>(-64);
@@ -34,8 +34,8 @@ const SelectedBet: FC<Props> = ({selectedBet, bets,teamsInfo, removeBet, deviceI
     const closeBet = () => {
         changeValueOfSelectedField(selectedBet.id);
         disableBet(selectedBet.id, true)
-        anim();
         removeBet(selectedBet.id);
+        anim();
     }
 
     const anim = () => {
@@ -104,7 +104,7 @@ const SelectedBet: FC<Props> = ({selectedBet, bets,teamsInfo, removeBet, deviceI
         subGroupName = teamsInfo.teams[teamsInfo.activeTeams[1]].name;
     }
 
-        return (
+    return (
         <div
             ref={betRef}
             className={classList([
@@ -115,7 +115,8 @@ const SelectedBet: FC<Props> = ({selectedBet, bets,teamsInfo, removeBet, deviceI
             <div className="selected-bet">
                 <div>
                     <h6>{groupName}</h6>
-                    <span className="selected-bet-name-odd">{subGroupName} {selectedBet.name ? (` (${selectedBet.name}) `) : ""}<span>
+                    <span
+                        className="selected-bet-name-odd">{subGroupName} {selectedBet.name ? (` (${selectedBet.name}) `) : ""}<span>
                         @{selectedBet.odd}</span></span>
                 </div>
                 <div>

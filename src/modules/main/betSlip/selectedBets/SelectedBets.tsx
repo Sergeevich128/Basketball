@@ -27,9 +27,6 @@ const SelectedBets: FC<Props> = ({betSlip, deviceInfo, handleTransitionend, user
 
     const removeBet = (id: number) => {
         removeSelectedBet && removeSelectedBet(id);
-        if (betSlip.selectedBets.length === 0) {
-            setBetSlipOpen(false)
-        }
     }
 
     const selectedBets = betSlip.selectedBets && betSlip.selectedBets.map((selectedBet) =>
@@ -57,7 +54,7 @@ const SelectedBets: FC<Props> = ({betSlip, deviceInfo, handleTransitionend, user
     </>
 
     return (<>{
-        (betSlip.selectedBets.length > 2 &&  isOpened) || deviceInfo.isDesktop
+        (betSlip.selectedBets.length > 2 && isOpened || isOpened) || deviceInfo.isDesktop
             ? <SimpleBar className="wrapper-selected-bets" autoHide={false}>
                 {content}
             </SimpleBar>

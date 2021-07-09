@@ -1,0 +1,12 @@
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 72.6%;
+    left: calc(50% - 118px);
+    width: 236px;
+    height: 49px;
+    background-color: #18191B;
+    transform-origin: center top;
+}

@@ -1,8 +1,8 @@
 import {
   CHANGE_DEFAULT_STAKE,
-  CHANGE_INPUT_STAKE, CHANGE_TOTAL_BET,
-  REMOVE_BET,
-  SELECT_TAB, SET_BET_ERROR
+  CHANGE_INPUT_STAKE, CHANGE_TOTAL_BET, CLEAR_SELECTED_BETS,
+  REMOVE_BET, REMOVE_PREVIEW_DATA,
+  SELECT_TAB, SEND_BETS_DATA, SET_BET_ERROR, SET_EVENT_ID
 } from "../../../storages/constants";
 
 export const changeDefaultStake = (defaultStake: string) => ({
@@ -35,4 +35,22 @@ export const setBetError = (errorType: string, id: number | string) => ({
 export const changeTotalBet = (totalBet: number) => ({
   type: CHANGE_TOTAL_BET,
   totalBet
+})
+
+export const sendBetsData = () => ({
+  type: SEND_BETS_DATA
+})
+
+export const setEventId = (id: number) => ({
+  type: SET_EVENT_ID,
+  id
+})
+
+export const removePreviewData = () => ({
+  type: REMOVE_PREVIEW_DATA
+})
+
+
+export const clearSelectedBets = () => ({
+  type: CLEAR_SELECTED_BETS
 })

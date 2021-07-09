@@ -1,9 +1,10 @@
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useRef} from "react";
 import {IBetsList, ISubGroup} from "../betsReducer";
 import {connect} from "react-redux";
 import {IStore} from "../../../index";
 import {ITeamsState} from "../../main/headerOfTeams/teamsInfo";
 import Bet from "./Bet";
+import IconStar from "./IconStar";
 
 interface Props {
     key?: number;
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const BetGroup: FC<Props> = ({key, name, subgroups, betTypes, bets, teamsInfo}) => {
+
+    let groupRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         let subGroups = document.getElementsByClassName("subgroups");
@@ -38,20 +41,13 @@ const BetGroup: FC<Props> = ({key, name, subgroups, betTypes, bets, teamsInfo}) 
         }
     }
 
-
     const firstTeam = teamsInfo.teams[teamsInfo.activeTeams[0]]
     const lastTeam = teamsInfo.teams[teamsInfo.activeTeams[1]]
 
     return (
-        <div key={key} className="group">
+        <div ref={groupRef} key={key} className="group no-active">
             <h3>
-                <svg onClick={() => console.log(1)} width="16" height="15" viewBox="0 0 16 15" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M8 0L9.88091 5.41115L15.6085 5.52786L11.0434 8.98885L12.7023 14.4721L8 11.2L3.29772 14.4721L4.95662 8.98885L0.391548 5.52786L6.11909 5.41115L8 0Z"
-                        fill="#232527"
-                    />
-                </svg>
+                <IconStar/>
                 {name}
                 <div onClick={openGroup} className="open-group"/>
             </h3>

@@ -1,0 +1,208 @@
+.result {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+}
+
+.result .match-result {
+    display: flex;
+}
+
+.result-trapezoid {
+    position: absolute;
+    left: calc(50% - 95px);
+    top: -20px;
+}
+
+.sub-trapezoid {
+    position: absolute;
+    left: calc(50% - 43px);
+    top: 4px;
+}
+
+.result .aside {
+    display: flex;
+    flex-direction: column;
+}
+
+.result .bets-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    padding: 0 19px;
+    text-transform: uppercase;
+    background: #121212;
+    color: #D7D7D7;
+}
+
+.result .bets-head span:last-child {
+    margin-left: 21px;
+}
+
+.result .wrapper-placed-bets {
+    flex-grow: 1;
+}
+
+.result .team {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    color: white;
+    text-transform: uppercase;
+}
+
+.result .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    position: relative;
+    padding-top: 3px;
+}
+
+.result .winner {
+    position: absolute;
+    bottom: 8px;
+    left: calc(50% - 56.5px);
+}
+
+@media (max-width: 991px) {
+    .result .aside {
+        height: calc(100% - 229px);
+    }
+
+    .result .wrapper-placed-bets {
+        overflow: hidden scroll;
+    }
+}
+
+.match-result .bot-panel .trapezoid-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    color: #858585;
+}
+
+.trapezoid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 178px;
+    height: 17px;
+    left: calc(50% - 89px);
+    top: -15px;
+    position: absolute;
+    padding: 0 22px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1;
+}
+
+@media (min-width: 992px) {
+    .wrapper-placed-bets {
+        margin-bottom: 30px;
+    }
+
+    .result-trapezoid.bt {
+        top: 47px;
+    }
+
+    .sub-trapezoid.bt {
+        top: 71px;
+    }
+
+    .result {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .result .match-result.mb {
+        margin: 86px 0 50px 0;
+    }
+
+    .rebet-btn {
+        flex-basis: 167px;
+    }
+
+    .result .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+        background: #26282B;
+    }
+
+    .result .wrapper-placed-bets .simplebar-track {
+        overflow: visible;
+        background: rgba(18, 18, 18, 0.7);
+        width: 6px;
+        right: -20px;
+    }
+
+    .simplebar-track {
+        overflow: visible;
+    }
+
+    .result .panel {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        height: 71px;
+        padding: 0 10px;
+    }
+
+    .result .next-match-btn {
+        flex-basis: 300px;
+    }
+
+    .result .panel div:nth-child(3) {
+        margin: 0 7px;
+    }
+
+    .result .wrapper-placed-bets {
+        height: 121px;
+    }
+
+    .result .screen-content {
+        height: 704px;
+        width: 662px;
+    }
+
+    .wonSVG {
+        margin: 0 auto;
+    }
+
+    .trapezoid {
+        left: calc(25% - 76px);
+    }
+
+    .result .team {
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    .result .team img {
+        height: 200px;
+    }
+
+    .result .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        flex-grow: 1;
+        position: relative;
+        padding-top: 3px;
+    }
+
+    .result .score {
+        color: white;
+        font-size: 36px;
+        line-height: 43px;
+        margin-bottom: 18px;
+    }
+}
+

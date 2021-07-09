@@ -1,0 +1,126 @@
+.run {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+}
+
+.screen-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.video-container {
+    width: 100%;
+    height: calc(100% - 329px);
+    position: relative;
+    background: #6B7783;
+    z-index: 1;
+}
+
+.run .aside {
+    display: flex;
+    flex-direction: column;
+    min-width: 230px;
+}
+
+.placed-bets {
+    height: calc(100% - 71px);
+}
+
+.run .wrapper-placed-bets {
+    height: calc(100% - 30px);
+}
+
+.bets-head span:nth-child(2),
+.bets-head span:nth-child(3) {
+    flex-basis: 62px;
+    text-align: center;
+}
+
+.bets-head span:nth-child(2) {
+    margin-left: auto;
+}
+
+.bets-head {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    color: #D7D7D7;
+}
+
+@media (max-width: 991px) {
+    .run .wrapper-placed-bets {
+        overflow: hidden scroll;
+    }
+
+    .run .aside {
+        height: calc(100% - 55vw);
+    }
+
+    .bets-head {
+
+        height: 30px;
+        padding-left: 18px;
+        background: #121212;
+        color: #D7D7D7;
+    }
+
+    .aside {
+        background: #1f2123;
+    }
+}
+
+@media (min-width: 992px) {
+    .run .screen-content {
+        display: flex;
+        flex-direction: row;
+        margin-top: 43px;
+        padding: 0 20px;
+        height: 661px;
+        max-height: calc(100% - 60px);
+    }
+
+    .run .aside {
+        padding-left: 6px;
+    }
+
+    .placed-bets {
+        height: calc(100% - 213px);
+    }
+
+    .run .panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: initial;
+        height: 213px;
+        border: 10px solid;
+    }
+
+    .run .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+        background: #26282B;
+    }
+
+    .run .wrapper-placed-bets .simplebar-track {
+        width: 6px;
+        right: -12px;
+    }
+
+
+    .run .panel .btn {
+        width: 100%;
+    }
+
+    .run .panel .skip {
+        flex-basis: 36px;
+        flex-grow: 0;
+        white-space: initial;
+        margin: auto 0 5px 0;
+    }
+
+    .run .panel .outcome {
+        flex-basis: 57px;
+        white-space: initial;
+    }
+}

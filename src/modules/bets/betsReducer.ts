@@ -22,8 +22,6 @@ export interface IBet {
     odd: number;
     selected?: boolean;
     name: string;
-    subgroupName: string;
-    groupName: string;
     disabled?: boolean;
 }
 
@@ -65,7 +63,7 @@ let betsTemplate: IBetsTemplate[] = [];
 
 let betGroups: IGroup[] = [];
 
-let betsList: IBetsList = []
+let betsList: IBetsList = [];
 
 const tabs: string[] = [
     'All',

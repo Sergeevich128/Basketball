@@ -1,32 +1,40 @@
-import React, {FC} from 'react';
-import {connect} from "react-redux";
+import React, {ComponentType, FC} from 'react';
+import {connect, Matching} from "react-redux";
 import {IStore} from "../../../index";
-import { IBetsList, ISubGroup} from "../betsReducer";
+import {IBetsList, ISubGroup} from "../betsReducer";
 import './teamBets.css'
+import Bet from "../components/Bet";
+import {IEventBets} from "../../main/types/EventTypes";
 
 interface Props {
     subgroups?: ISubGroup[];
-    bets: IBetsList;
+    bets: IEventBets;
+    firstTeam: string;
+    lastTeam: string;
 }
 
-const TeamBets: FC<Props> = ({bets}) => {
-    // const bet = bets.filter((bet) => bet.groupName === 'Money line');
+const TeamBets: ComponentType<Matching<Props, any>> = ({bets, firstTeam, lastTeam}) => {
+    const teamBets = [];
+
+    for (let i in bets) {
+        bets[i].name === "" && teamBets.push(bets[i])
+    }
 
     return (
         <div className="team-bets selected">
-            {/*<Bet bet={bet[0]} name={bet[0].subgroupName}/>*/}
-            {/*<div className="vs">*/}
-            {/*    <div className="romb">*/}
-            {/*        <div>vs</div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<Bet bet={bet[1]} name={bet[1].subgroupName}/>*/}
+            <Bet bet={teamBets[0]} name={firstTeam}/>
+            <div className="vs">
+                <div className="romb">
+                    <div>vs</div>
+                </div>
+            </div>
+            <Bet bet={teamBets[1]} name={lastTeam}/>
         </div>
     );
 };
 
 export default connect(
-    ({bets}: IStore) => ({
-        bets: bets.betsList
+    ({mainReducer}: IStore) => ({
+        bets: mainReducer.previewData?.bets,
     }),
 )(TeamBets);

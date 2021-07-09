@@ -7,11 +7,13 @@ import Balance from "./balance/Balance";
 
 const Header = () => (
     <header>
-      <MenuSandwich/>
-      <Logo/>
-      <Time/>
-      <Balance/>
+        <div className="header-inner">
+            <MenuSandwich/>
+            <Logo/>
+            <Time/>
+            <Balance/>
+        </div>
     </header>
-  )
+)
 
 export default Header;

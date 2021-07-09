@@ -37,8 +37,4 @@
     background: #26282B;
 }
 
-@media (min-width: 992px) {
-    .tabs-container {
-        top: 62px;
-    }
-}
+/*@media (min-width: 992px) {}*/

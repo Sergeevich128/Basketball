@@ -1,9 +1,15 @@
-.bet-groups {
+.bet-groups-container {
     display: flex;
     justify-content: space-between;
-    min-height: calc(100vh - 386px);
+    min-height: calc(100vh - 357px);
     background: #1F2123;
     font-family: 'Open Sans', sans-serif;
+}
+
+.bet-groups {
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .group h3 {
@@ -54,7 +60,7 @@
     margin-right: 15px;
 }
 
-.bet-groups h4 {
+.bet-groups-container h4 {
     margin: 0;
     height: 20px;
 }
@@ -157,10 +163,6 @@
     color: #232527;
 }
 
-.bet.selected span:last-child {
-    color: white;
-}
-
 .group {
     width: 336px;
     display: flex;
@@ -169,9 +171,15 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 25px;
+    order: 100000;
+    transition: transform .8s;
 }
 
-.bet-groups.mobile {
+.group.active .icon-star path {
+    fill: #EB460C;
+}
+
+.bet-groups-container.mobile {
     display: block;
 }
 

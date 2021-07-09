@@ -1,0 +1,67 @@
+.main-simplebar .simplebar-content-wrapper {
+    height: 100%;
+    max-height: 100%;
+}
+
+main {
+    width: 100%;
+    margin: 60px auto 0;
+    height: calc(100% - 60px);
+    position: relative;
+    transition: .3s;
+}
+
+/*.preview,*/
+/*.run,*/
+/*.result {*/
+/*    opacity: 0;*/
+/*    transform: translateX(100%);*/
+/*}*/
+
+/*.show-preview .preview,*/
+/*.show-run .run,*/
+/*.show-result .result {*/
+/*    opacity: 1;*/
+/*    transform: translateX(0);*/
+/*    transition: 1s;*/
+/*}*/
+
+/*.hide-run .run,*/
+/*.hide-result .result {*/
+/*    opacity: 0;*/
+/*    transform: translateX(-60%);*/
+/*    transition: 1s;*/
+/*}*/
+
+    /*.hide-preview .preview {*/
+    /*    opacity: 0;*/
+    /*    transform: translateX(-60%);*/
+    /*    transition: 1s;*/
+    /*}*/
+
+
+
+/*.preview.show,*/
+/*.run.show,*/
+/*.result.show {*/
+/*    opacity: 1;*/
+/*    transform: translateX(0);*/
+/*    transition: 1s;*/
+/*    z-index: 1;*/
+/*}*/
+
+/*.preview.fade,*/
+/*.run.fade,*/
+/*.result.fade {*/
+/*    opacity: 0;*/
+/*    transform: translateX(-60%);*/
+/*    transition: 1s;*/
+/*    filter: contrast(0.7);*/
+/*    z-index: 0;*/
+/*}*/
+
+@media (max-width: 991px) {
+    main {
+        display: flex;
+    }
+}

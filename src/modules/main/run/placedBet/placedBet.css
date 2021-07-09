@@ -1,0 +1,98 @@
+.placed-bet {
+    display: flex;
+    align-items: center;
+    height: 63px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    background: #26282B;
+    border-bottom: 1px solid #717274;
+    color: white;
+}
+
+.placed-bet div:first-child {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 0 15px;
+    line-height: 15px;
+}
+
+.placed-bet div:first-child span:first-child {
+    font-family: "Open Sans";
+    color: #D7D7D7;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.placed-bet div:first-child span:last-child {
+    font-size: 13px;
+}
+
+.amount,
+.est {
+    text-align: center;
+    flex-basis: 62px;
+}
+
+.est {
+    color: #EB460C;
+}
+
+.wrapper-placed-bets .simplebar-track {
+    overflow: visible;
+}
+
+@media (max-width: 991px) {
+    .amount,
+    .est {
+        padding: 0 4px;
+    }
+}
+
+@media (min-width: 992px) {
+    .run .placed-bet {
+        flex-direction: column;
+    }
+
+    .result .placed-bet {
+        height: 39px;
+        border-bottom: none;
+    }
+
+    .run .placed-bet {
+        border-bottom: none;
+        padding: 8px;
+        height: 59px;
+        align-items: flex-start;
+    }
+
+    .run .placed-bet:not(:last-of-type),
+    .result .placed-bet:not(:last-of-type) {
+        margin-bottom: 2px;
+    }
+
+    .placed-bet {
+        justify-content: space-evenly;
+        height: auto;
+        padding: 4px 15px;
+        background: linear-gradient(90deg, rgba(89, 55, 41, 0.8) 0%, rgba(35, 36, 39, 0.8) 100%);
+        border-radius: 2px;
+    }
+
+    .placed-bet div:nth-child(1) {
+        flex-direction: row;
+        margin-left: 0;
+    }
+
+    .run .placed-bet div:nth-child(1) {
+        flex-direction: column;
+    }
+
+    .result .placed-bet div:first-child span:first-child {
+        margin-right: 30px;
+    }
+
+    .run .placed-bet div:nth-child(2) {
+        display: none;
+    }
+}

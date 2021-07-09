@@ -1,0 +1,21 @@
+.panel {
+    display: flex;
+    justify-content: space-between;
+    height: 71px;
+    z-index: 1;
+    pointer-events: auto;
+    background: black;
+}
+
+.result .panel {
+    flex-wrap: wrap;
+    height: 135px;
+    position: relative;
+}
+
+
+@media (max-width: 991px) {
+    .panel {
+        padding: 7px;
+    }
+}

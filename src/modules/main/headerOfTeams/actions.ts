@@ -1,12 +1,4 @@
-import {PRESS_PREV, PRESS_NEXT, SET_TEAMS, SET_ACTIVE_TEAMS, SET_STATISTICS} from "../../../storages/constants";
-
-export const pressPrevBtn = () => ({
-  type: PRESS_PREV
-});
-
-export const pressNextBtn = () => ({
-  type: PRESS_NEXT
-});
+import {SET_TEAMS, SET_ACTIVE_TEAMS, SET_STATISTICS, SET_EVENT_ID} from "../../../storages/constants";
 
 export const setTeamsData = (data: Object) => ({
   type: SET_TEAMS,

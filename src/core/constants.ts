@@ -12,15 +12,11 @@ const classList = (arr: (string | boolean | number | undefined)[]): string => ar
 
 const urlParams = new URLSearchParams(window.location.search);
 let platform_token = urlParams.get("platform_token");
-
-const requestData = (url: string) => {
-    return fetch(url, {cache: "no-store"})
-        .then((res) => res.json())
-}
+let url = urlParams.get("url");
 
 export {
     betsConfig,
-    requestData,
     platform_token,
+    url,
     classList
 };
